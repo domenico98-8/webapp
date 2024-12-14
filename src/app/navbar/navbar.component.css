@@ -1,0 +1,10 @@
+.navbar-brand{
+  width: 120px; /* Imposta una larghezza specifica */
+  height: auto; /* Mantiene le proporzioni dell'immagine */
+}
+
+.login{
+  width: 45px; /* Imposta una larghezza fissa */
+  height: auto;
+  margin-left: 20px;
+}

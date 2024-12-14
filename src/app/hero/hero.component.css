@@ -1,0 +1,8 @@
+.hero {
+  background-image: url('https://boscolo-viaggi-res.cloudinary.com/images/w_2560,h_1709/f_auto,q_auto/v1697632955/Blog/volo_aereo_s9e6go/volo_aereo_s9e6go.jpg?_i=AA');
+  background-size: cover;
+  background-position: center 30%;
+  color: white;
+  padding: 100px 0;
+  text-align: left;
+}

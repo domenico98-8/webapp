@@ -1,0 +1,24 @@
+.card {
+  height: 100%; /* Fa in modo che tutte le card abbiano la stessa altezza */
+  display: flex;
+  flex-direction: column; /* Dispone il contenuto in colonna */
+  justify-content: space-between; /* Distribuisce lo spazio tra immagine e contenuto */
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-img-top {
+  height: 200px; /* Imposta un'altezza fissa per le immagini */
+  object-fit: cover; /* Ritaglia e adatta l'immagine per riempire l'area senza distorsioni */
+  width: 100%; /* Assicura che l'immagine occupi tutta la larghezza */
+}
+
+.card-body {
+  flex-grow: 1; /* Assicura che il contenuto si espanda uniformemente */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribuisce il titolo e il testo */
+}
+
+.card:hover {
+  transform: scale(1.1);  /* Ingrandisce la card del 10% */
+}

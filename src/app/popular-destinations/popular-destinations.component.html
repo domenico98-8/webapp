@@ -1,0 +1,14 @@
+<section class="container my-5">
+  <h2 class="text-center">Destinazioni Popolari</h2>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let destination of popupularDestinations">
+      <div class="card">
+        <img [src]="destination.image" class="card-img-top" [alt]="destination.name">
+        <div class="card-body">
+          <h5 class="card-title">{{ destination.name }}</h5>
+          <p class="card-text">{{ destination.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

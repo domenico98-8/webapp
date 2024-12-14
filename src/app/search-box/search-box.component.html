@@ -1,0 +1,40 @@
+<section class="search-box">
+  <div class="container">
+    <h2 class="text-center">Trova il tuo volo</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="from" class="form-label">Partenza</label>
+            <input type="text" class="form-control" id="from" name="partenza" [(ngModel)]="from" placeholder="Città di partenza">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="to" class="form-label">Destinazione</label>
+            <input type="text" class="form-control" id="to" name="destinazione" [(ngModel)]="to" placeholder="Città di destinazione">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="mb-3">
+            <label for="dateFrom" class="form-label">Data Da</label>
+            <input type="date" class="form-control"  name="dataDa" [(ngModel)]="dateFrom" id="dateFrom">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="mb-3">
+            <label for="dateTo" class="form-label">Data A</label>
+            <input type="date" class="form-control" id="dateTo" name="dataA" [(ngModel)]="dateTo">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-primary btn-block">Cerca</button>
+        </div>
+      </div>
+    </form>
+    <ng-container *ngIf="isSearchSubmitted">
+      <app-search-results [searchParams]="searchParams"></app-search-results>
+    </ng-container>
+  </div>
+</section>
+
