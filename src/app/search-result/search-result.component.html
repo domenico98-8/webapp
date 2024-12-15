@@ -4,11 +4,10 @@
     <li class="list-group-item" *ngFor="let flight of flights">
       <div class="d-flex justify-content-between">
         <div>
-          <h5 class="card-title">{{ flight.airline }}</h5>
-          <p class="card-text"><strong>Partenza:</strong> {{ flight.departure }}</p>
-          <p class="card-text"><strong>Arrivo:</strong> {{ flight.arrival }}</p>
-          <p class="card-text"><strong>Durata:</strong> {{ flight.duration }}</p>
-          <p class="card-text"><strong>Prezzo:</strong> {{ flight.price }}</p>
+          <p class="card-text"><strong>Partenza:</strong> {{ flight.partenzaDa }}</p>
+          <p class="card-text"><strong>Arrivo:</strong> {{ flight.destinazioneA }}</p>
+          <!--<p class="card-text"><strong>Durata:</strong> {{ flight.duration }}</p>-->
+          <p class="card-text"><strong>Prezzo:</strong> {{ flight.prezzo }}</p>
         </div>
         <button class="btn btn-success align-self-center">Prenota</button>
       </div>

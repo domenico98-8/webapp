@@ -32,9 +32,9 @@
         </div>
       </div>
     </form>
-    <ng-container *ngIf="isSearchSubmitted">
+    <div *ngIf="isSearchSubmitted">
       <app-search-results [searchParams]="searchParams"></app-search-results>
-    </ng-container>
+    </div>
   </div>
 </section>
 

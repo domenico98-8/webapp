@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { VoliService } from '../services/voli.service';
 import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
+import {VoloRequest, VoloResponse} from "../modelli/Volo";
 
 @Component({
   selector: 'app-search-results',
@@ -9,9 +11,9 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class SearchResultsComponent implements OnInit {
 
-  @Input() searchParams: any;
+  @Input() searchParams: VoloRequest | undefined;
 
-  flights: any[] = [];
+  flights: VoloResponse[] = [];
 
   constructor(private flightService: VoliService) { }
 
@@ -24,10 +26,17 @@ export class SearchResultsComponent implements OnInit {
   }
 
   private loadResults(): void {
-    this.flightService.getFlightsFromRest();
     if (this.searchParams) {
       // Ottieni e filtra i voli dal servizio in base ai parametri di ricerca
-      this.flights = this.flightService.getFlights();
+      this.flightService.getFlightsFromRest(this.searchParams).subscribe(
+        (data) => {
+          console.log('Dati ricevuti:', data); // Stampa per verificare i dati
+          this.flights = data; // Memorizza i dati ricevuti
+        },
+        (error) => {
+          console.error('Errore durante il caricamento dei voli:', error);
+        }
+      );
     }
   }
 }

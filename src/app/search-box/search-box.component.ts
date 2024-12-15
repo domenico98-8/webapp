@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {VoloRequest} from "../modelli/Volo";
 
 @Component({
   selector: 'app-search-box',
@@ -12,16 +13,15 @@ export class SearchBoxComponent {
   dateTo: string = '';
 
   isSearchSubmitted: boolean = false;
-  searchParams: any = {};
+  searchParams: VoloRequest | undefined;
 
   constructor() {}
 
   onSubmit() {
     this.searchParams = {
-      from: this.from,
-      to: this.to,
-      dateFrom: this.dateFrom,
-      dateTo: this.dateTo
+      partenzaDa: this.from,
+      destinazioneA: this.to,
+      dataPartenza: this.dateFrom
     };
 
     this.isSearchSubmitted = true; // Attiva la visualizzazione dei risultati
