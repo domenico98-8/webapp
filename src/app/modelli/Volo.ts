@@ -8,6 +8,7 @@ export interface VoloResponse {
   dataArrivo: string;
   orarioArrivo: string;
   prezzo: number;
+  durataVolo:string;
 }
 
 export interface VoloRequest {

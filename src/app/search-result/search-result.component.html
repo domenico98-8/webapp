@@ -1,16 +1,51 @@
 <div class="container my-5">
   <h3 class="text-center">Risultati della Ricerca</h3>
+
+  <!-- Spinner di caricamento -->
+  <div *ngIf="isLoading" class="d-flex justify-content-center my-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Caricamento...</span>
+    </div>
+  </div>
+
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let flight of flights">
-      <div class="d-flex justify-content-between">
-        <div>
-          <p class="card-text"><strong>Partenza:</strong> {{ flight.partenzaDa }}</p>
-          <p class="card-text"><strong>Arrivo:</strong> {{ flight.destinazioneA }}</p>
-          <!--<p class="card-text"><strong>Durata:</strong> {{ flight.duration }}</p>-->
-          <p class="card-text"><strong>Prezzo:</strong> {{ flight.prezzo }}</p>
+    <!-- Messaggio nessun risultato -->
+    <div *ngIf="flights.length === 0 && !isLoading; else result">
+      <p class="noFly">Nessun volo trovato</p>
+    </div>
+
+    <!-- Mostra risultati -->
+    <ng-template #result>
+      <li class="list-group-item" *ngFor="let flight of flights">
+        <div class="d-flex justify-content-between align-items-center">
+          <!-- Dettagli grafico volo -->
+          <div class="flight-graphic">
+            <div class="flight-path d-flex align-items-center">
+              <span class="ora text-truncate">{{ flight.orarioPartenza }}</span>
+              <span class="city text-truncate">{{ flight.partenzaDa }}</span>
+              <div class="line-container d-flex align-items-center">
+                <hr class="flight-line" />
+                <div class="plane-wrapper">
+                  <span class="flight-duration text-truncate">{{ flight.durataVolo }}</span>
+                  <i class="fas fa-plane plane-icon"></i> <!-- Icona aereo -->
+                </div>
+                <hr class="flight-line" />
+              </div>
+              <span class="city text-truncate">{{ flight.destinazioneA }}</span>
+              <span class="ora text-truncate">{{ flight.orarioArrivo }}</span>
+            </div>
+          </div>
+
+          <!-- Spazio tra il grafico e i contenuti a destra -->
+          <div class="vertical-line"></div>
+
+          <!-- Bottone prenotazione -->
+          <div class="book-container">
+            <div class="price">€{{ flight.prezzo }}</div>
+            <button class="btn btn-success">Prenota</button>
+          </div>
         </div>
-        <button class="btn btn-success align-self-center">Prenota</button>
-      </div>
-    </li>
+      </li>
+    </ng-template>
   </ul>
 </div>

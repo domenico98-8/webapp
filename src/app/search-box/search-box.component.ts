@@ -11,6 +11,7 @@ export class SearchBoxComponent {
   to: string = '';
   dateFrom: string = '';
   dateTo: string = '';
+  tripType: string = 'oneWay';
 
   isSearchSubmitted: boolean = false;
   searchParams: VoloRequest | undefined;

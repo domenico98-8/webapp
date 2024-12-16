@@ -1,0 +1,167 @@
+.container {
+  margin: 0 auto;
+  padding: 20px;
+  width: fit-content; /* Adatta il div al contenuto */
+  max-width: 100%; /* Evita overflow su schermi piccoli */
+  box-sizing: border-box; /* Considera padding nella larghezza */
+  background-color: #f9f9f9; /* Sfondo leggero per evidenziare il contenitore */
+  border-radius: 8px; /* Per rendere il contenitore più elegante */
+  overflow: auto;
+}
+
+h3.text-center {
+  margin-bottom: 30px; /* Spaziatura sotto il titolo */
+  font-size: 2rem;
+  color: #333;
+  text-transform: capitalize; /* Estetica migliorata per il titolo */
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  color: #007bff;
+}
+
+.noFly {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+ul.list-group {
+  padding: 0; /* Spaziatura interna */
+  list-style-type: none; /* Rimuove punti elenco */
+  margin: 0 auto; /* Centra la lista */
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Occupa tutta la larghezza */
+  max-width: 1400px; /* Larghezza massima */
+  margin: 15px 0; /* Più spazio tra gli elementi */
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: auto;
+}
+
+.list-group-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Aumenta intensità al passaggio */
+}
+
+.flight-graphic {
+  flex: 3; /* Occupa più spazio della riga */
+}
+
+.flight-path {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Spazio uniforme tra gli elementi nella traiettoria */
+  margin-left: 20px; /* Aggiunge spazio dalla linea verticale */
+}
+
+.city,
+.flight-duration {
+  font-size: 1rem;
+  text-align: center;
+  white-space: nowrap; /* Evita la rottura riga */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Troncamento del testo lungo */
+}
+
+.ora {
+  font-size: 1rem;
+  color: #555;
+  margin-left: 20px; /* Allontana l'orario dalla linea verticale */
+  white-space: nowrap; /* Evita la rottura di righe */
+}
+
+.flight-duration {
+  position: absolute; /* Posiziona sopra l'icona */
+  top: 50%; /* Allinea verticalmente */
+  left: 50%; /* Allinea orizzontalmente */
+  transform: translate(-50%, -50%); /* Perfetto centraggio */
+  font-size: 0.85rem; /* Testo leggermente più piccolo */
+  color: #555; /* Contrasto leggibile */
+  white-space: nowrap; /* Evita rotture di testo */
+  z-index: 2; /* Assicura che il testo sia sopra l'icona */
+  background-color: rgba(255, 255, 255, 0.8); /* Sfondo traslucido opzionale (se necessario) */
+  padding: 2px 5px; /* Padding per maggiore leggibilità */
+  border-radius: 3px; /* Angoli arrotondati per il testo */
+}
+
+.city {
+  font-weight: bold;
+  font-size: 1.1rem; /* Testo lievemente più visibile */
+  color: #444;
+}
+
+.flight-line {
+  width: 70px; /* Lunghezza della linea */
+  height: 2px;
+  background-color: #aaa; /* Colore leggermente più chiaro per maggiore leggibilità */
+}
+
+.plane-wrapper {
+  position: relative; /* Base per posizionare flight-duration */
+  display: flex;
+  align-items: center; /* Centra l'icona verticale */
+  justify-content: center; /* Centra l'icona orizzontale */
+}
+
+.flight-duration {
+  position: absolute;
+  top: -15px; /* Posizione sopra all'icona aereo */
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.plane-icon {
+  font-size: 1.5rem; /* Grandezza dell'icona */
+  color: #007bff;
+  z-index: 1;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #333;
+  white-space: nowrap; /* Evita rotture di riga */
+  margin: 0;
+}
+
+.vertical-line {
+  width: 2px;
+  height: 100%;
+  min-height: 80px;
+  background-color: #ccc;
+  margin-right: 20px; /* Aggiungi spazio a destra per separare ulteriormente */
+}
+
+.book-container {
+  display: flex;
+  flex-direction: column; /* Dispone gli elementi in colonna */
+  align-items: center; /* Centra il prezzo e il pulsante */
+  gap: 10px; /* Regola lo spazio tra prezzo e pulsante */
+  text-align: center;
+  margin-left: 20px; /* Incrementa la distanza dalla linea verticale */
+}
+
+.btn-success {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: #28a745;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #218838; /* Colore verde più scuro al passaggio */
+  transform: translateY(-2px); /* Leggero effetto sollevamento */
+}

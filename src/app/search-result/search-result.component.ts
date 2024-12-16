@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { VoliService } from '../services/voli.service';
-import {ActivatedRoute} from "@angular/router";
-import {Observable} from "rxjs";
 import {VoloRequest, VoloResponse} from "../modelli/Volo";
 
 @Component({
@@ -12,6 +10,8 @@ import {VoloRequest, VoloResponse} from "../modelli/Volo";
 export class SearchResultsComponent implements OnInit {
 
   @Input() searchParams: VoloRequest | undefined;
+
+  isLoading: boolean = true;
 
   flights: VoloResponse[] = [];
 
@@ -32,9 +32,11 @@ export class SearchResultsComponent implements OnInit {
         (data) => {
           console.log('Dati ricevuti:', data); // Stampa per verificare i dati
           this.flights = data; // Memorizza i dati ricevuti
+          this.isLoading = false;
         },
         (error) => {
           console.error('Errore durante il caricamento dei voli:', error);
+          this.isLoading = false;
         }
       );
     }

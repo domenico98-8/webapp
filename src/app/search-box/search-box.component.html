@@ -3,6 +3,16 @@
     <h2 class="text-center">Trova il tuo volo</h2>
     <form (ngSubmit)="onSubmit()">
       <div class="row">
+        <div class="col-md-12 mb-3 text-center">
+          <label class="form-check-label me-3">
+            <input type="radio" name="tripType" [(ngModel)]="tripType" value="oneWay" class="form-check-input">
+            Solo Andata
+          </label>
+          <label class="form-check-label">
+            <input type="radio" name="tripType" [(ngModel)]="tripType" value="roundTrip" class="form-check-input">
+            Andata e Ritorno
+          </label>
+        </div>
         <div class="col-md-4">
           <div class="mb-3">
             <label for="from" class="form-label">Partenza</label>
@@ -21,14 +31,23 @@
             <input type="date" class="form-control"  name="dataDa" [(ngModel)]="dateFrom" id="dateFrom">
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2" *ngIf="tripType === 'roundTrip'">
           <div class="mb-3">
             <label for="dateTo" class="form-label">Data A</label>
-            <input type="date" class="form-control" id="dateTo" name="dataA" [(ngModel)]="dateTo">
+            <input
+              type="date"
+              class="form-control"
+              id="dateTo"
+              name="dataA"
+              [(ngModel)]="dateTo">
           </div>
         </div>
-        <div class="col-md-2">
-          <button type="submit" class="btn btn-primary btn-block">Cerca</button>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary btn-lg search-btn">
+            Cerca
+          </button>
         </div>
       </div>
     </form>
