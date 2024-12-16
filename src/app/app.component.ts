@@ -14,7 +14,7 @@ export class AppComponent implements OnInit{
   }
 
   checkAuthentication(): void {
-    // Verifica con un semplice controllo su localStorage
-    this.isAuthenticated = !!localStorage.getItem('authToken');
+    const token = localStorage.getItem('authToken');
+    this.isAuthenticated = token !== null && token.trim().length > 0;
   }
 }

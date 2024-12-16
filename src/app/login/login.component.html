@@ -10,13 +10,13 @@
   <!-- Form di Login -->
   <form (ngSubmit)="login()" #loginForm="ngForm">
     <div class="form-group">
-      <label for="username">Username</label>
+      <label for="email">Email</label>
       <input
         type="text"
-        id="username"
-        name="username"
-        ngModel
-        placeholder="Inserisci il tuo username"
+        id="email"
+        name="email"
+        [(ngModel)]="email"
+        placeholder="Inserisci la tua email"
         required
       />
     </div>
@@ -26,7 +26,7 @@
         type="password"
         id="password"
         name="password"
-        ngModel
+        [(ngModel)]="password"
         placeholder="Inserisci la tua password"
         required
       />
