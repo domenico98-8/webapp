@@ -3,4 +3,12 @@
   color: white;
   padding: 20px 0;
   text-align: center;
+  margin-top: auto; /* Spinge il footer in fondo alla pagina */
 }
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+

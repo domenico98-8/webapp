@@ -1,16 +1,17 @@
-<!-- Toolbar -->
-<div class="toolbar" role="banner">
+<!-- Toolbar - visibile solo se l'utente è loggato -->
+<div *ngIf="isAuthenticated" class="toolbar" role="banner">
   <app-navbar></app-navbar>
 </div>
 
-<div>
+<!-- Hero - visibile solo se l'utente è loggato -->
+<div *ngIf="isAuthenticated">
   <app-hero></app-hero>
 </div>
 
+<!-- Contenitore principale -->
 <router-outlet></router-outlet>
 
-  <!-- Footer -->
+<!-- Footer -->
 <footer class="footer">
   <p>&copy; 2024 SkyFly. Tutti i diritti riservati.</p>
 </footer>
-

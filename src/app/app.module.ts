@@ -11,6 +11,7 @@ import {SearchResultsComponent} from "./search-result/search-result.component";
 import {FormsModule} from "@angular/forms";
 import {HomePageComponent} from "./home-page/home-page.component";
 import {HttpClientModule} from "@angular/common/http";
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {HttpClientModule} from "@angular/common/http";
     SearchBoxComponent,
     PopularDestinationsComponent,
     SearchResultsComponent,
-    HomePageComponent
+    HomePageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
