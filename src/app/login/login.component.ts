@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginService} from "../services/login.service";
+import {BehaviorSubject} from "rxjs";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,7 @@ export class LoginComponent {
   password: string | undefined;
   private hash: string | undefined;
 
-  constructor(private router: Router, private loginService: LoginService) { }
+  constructor(private router: Router, private loginService: LoginService,private authService: AuthService) { }
 
   async login() {
     if (!this.email || !this.password) {
@@ -35,15 +37,22 @@ export class LoginComponent {
         console.log('Token ricevuto:', token);
 
         // Salva il token nel localStorage
-        localStorage.setItem('authToken', token);
+        this.authService.saveToken(token);
 
-        // Reindirizza alla home page
-        this.router.navigate(['/home-page']);
+        this.router.navigate(['/home-page']).then(() => {
+          // Esegui il refresh della pagina
+          window.location.reload();
+        });
       },
       (error) => {
         console.error('Errore durante l\'accesso:', error);
         alert('Credenziali non valide, riprova');
       });
+  }
+
+  logout() {
+    this.authService.removeToken();
+    this.router.navigate(['/login']);
   }
 
   private async generateHash(input: string | undefined): Promise<string> {

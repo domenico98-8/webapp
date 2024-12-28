@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,15 @@ export class AppComponent implements OnInit{
   isAuthenticated = false;
   title = 'wabapp';
 
+  constructor(private authService: AuthService) {
+  }
+
   ngOnInit(): void {
     this.checkAuthentication();
   }
 
   checkAuthentication(): void {
-    const token = localStorage.getItem('authToken');
+    const token = this.authService.getToken();
     this.isAuthenticated = token !== null && token.trim().length > 0;
   }
 }
