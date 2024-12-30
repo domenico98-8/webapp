@@ -50,11 +50,6 @@ export class LoginComponent {
       });
   }
 
-  logout() {
-    this.authService.removeToken();
-    this.router.navigate(['/login']);
-  }
-
   private async generateHash(input: string | undefined): Promise<string> {
     // Codifica la stringa in formato Uint8Array
     const encoder = new TextEncoder();
