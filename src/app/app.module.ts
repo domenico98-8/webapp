@@ -13,6 +13,7 @@ import {HomePageComponent} from "./home-page/home-page.component";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
 import {AuthInterceptor} from "./auth.interceptor";
+import { PrenotaVoloComponent } from './prenota-volo/prenota-volo.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {AuthInterceptor} from "./auth.interceptor";
     PopularDestinationsComponent,
     SearchResultsComponent,
     HomePageComponent,
-    LoginComponent
+    LoginComponent,
+    PrenotaVoloComponent
   ],
   imports: [
     BrowserModule,

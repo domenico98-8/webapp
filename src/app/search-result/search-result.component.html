@@ -42,7 +42,7 @@
           <!-- Bottone prenotazione -->
           <div class="book-container">
             <div class="price">€{{ flight.prezzo }}</div>
-            <button class="btn btn-success">Prenota</button>
+            <button class="btn btn-success" (click)="prenotaVolo(flight)">Prenota</button>
           </div>
         </div>
       </li>

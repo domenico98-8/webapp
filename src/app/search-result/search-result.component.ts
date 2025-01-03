@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { VoliService } from '../services/voli.service';
 import {VoloRequest, VoloResponse} from "../modelli/Volo";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-search-results',
@@ -15,7 +16,7 @@ export class SearchResultsComponent implements OnInit {
 
   flights: VoloResponse[] = [];
 
-  constructor(private flightService: VoliService) { }
+  constructor(private flightService: VoliService,private router:Router) { }
 
   ngOnInit(): void {
     this.loadResults();
@@ -23,6 +24,18 @@ export class SearchResultsComponent implements OnInit {
 
   ngOnChanges(): void {
     this.loadResults();
+  }
+
+  prenotaVolo(flight: VoloResponse) {
+    this.router.navigate(['/prenota-volo'], {
+      queryParams: {
+        origine: flight.partenzaDa,
+        destinazione: flight.destinazioneA,
+        orarioPartenza: flight.orarioPartenza,
+        orarioArrivo: flight.orarioArrivo,
+        prezzo: flight.prezzo,
+      }
+    });
   }
 
   private loadResults(): void {
