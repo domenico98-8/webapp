@@ -165,3 +165,15 @@ ul.list-group {
   background-color: #218838; /* Colore verde più scuro al passaggio */
   transform: translateY(-2px); /* Leggero effetto sollevamento */
 }
+
+.flight-code {
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-align: center; /* Per centrare il codice sotto l'icona */
+}
+
+.plane-wrapper {
+  display: flex;
+  flex-direction: column; /* Per disporre l'icona dell'aereo sopra il codice */
+  align-items: center; /* Centra l'icona e il codice */
+}

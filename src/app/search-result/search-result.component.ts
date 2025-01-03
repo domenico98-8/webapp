@@ -29,6 +29,7 @@ export class SearchResultsComponent implements OnInit {
   prenotaVolo(flight: VoloResponse) {
     this.router.navigate(['/prenota-volo'], {
       queryParams: {
+        codiceVolo: flight.codiceVolo,
         origine: flight.partenzaDa,
         destinazione: flight.destinazioneA,
         orarioPartenza: flight.orarioPartenza,
