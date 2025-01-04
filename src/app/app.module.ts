@@ -8,7 +8,7 @@ import { HeroComponent } from './hero/hero.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { PopularDestinationsComponent } from './popular-destinations/popular-destinations.component';
 import {SearchResultsComponent} from "./search-result/search-result.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HomePageComponent} from "./home-page/home-page.component";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
@@ -28,12 +28,13 @@ import { PrenotaVoloComponent } from './prenota-volo/prenota-volo.component';
     LoginComponent,
     PrenotaVoloComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],

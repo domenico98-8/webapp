@@ -1,0 +1,69 @@
+<div class="prenota-volo">
+  <h2>Dettagli del Volo</h2>
+  <p><strong>Codice Volo:</strong> {{codiceVolo}}</p>
+  <p><strong>Origine:</strong> {{origine}}</p>
+  <p><strong>Destinazione:</strong> {{destinazione}}</p>
+  <p><strong>Orario di Partenza:</strong> {{orarioPartenza}}</p>
+  <p><strong>Orario di Arrivo:</strong> {{orarioArrivo}}</p>
+  <p><strong>Prezzo:</strong> €{{prezzo}}</p>
+
+  <!-- Form per la selezione del numero di passeggeri -->
+  <div *ngIf="!passeggeriSelezionati">
+    <h3>Seleziona il numero di passeggeri</h3>
+    <form [formGroup]="passeggeriForm" (ngSubmit)="selezionaPasseggeri()">
+      <label for="numeroPasseggeri">Numero di passeggeri:</label>
+      <input id="numeroPasseggeri" type="number" formControlName="numeroPasseggeri" min="1" max="10" />
+      <button type="submit">Continua</button>
+    </form>
+  </div>
+
+  <!-- Form per i dettagli dei passeggeri -->
+  <div *ngIf="passeggeriSelezionati">
+    <!-- Pulsante per tornare indietro alla selezione dei passeggeri -->
+    <button (click)="annullaDettagliPasseggeri()">Torna indietro</button>
+    <h3>Inserisci i dettagli dei passeggeri</h3>
+    <form *ngFor="let passeggero of passeggeri; let i = index" [formGroup]="passeggero">
+      <div>
+        <h4>Passeggero {{ i + 1 }}</h4>
+        <label for="nome{{i}}">Nome:</label>
+        <input id="nome{{i}}" type="text" formControlName="nome" placeholder="Nome" required />
+      </div>
+      <div>
+        <label for="cognome{{i}}">Cognome:</label>
+        <input id="cognome{{i}}" type="text" formControlName="cognome" placeholder="Cognome" required />
+      </div>
+      <div>
+        <label for="sesso{{i}}">Sesso:</label>
+        <select id="sesso{{i}}" formControlName="sesso" required>
+          <option value="" selected>Seleziona</option>
+          <option value="M">M</option>
+          <option value="F">F</option>
+          <option value="ND">Preferisco non dirlo</option>
+        </select>
+      </div>
+      <div>
+        <label for="dataNascita{{i}}">Data di nascita:</label>
+        <input id="dataNascita{{i}}" type="date" formControlName="dataNascita" required />
+      </div>
+    </form>
+  </div>
+
+  <!-- Sezione per la selezione del posto -->
+  <div *ngIf="passeggeriSelezionati">
+    <h3>Scegli il tuo posto</h3>
+    <div class="aereo">
+      <div *ngFor="let fila of aereo"
+           [class.libero]="!fila.stato"
+           [class.occupato]="fila.stato"
+           [class.selezionato]="fila.stato===2"
+           (click)="selezionaPosto(fila)">
+        {{ fila.numeroPosto }}
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div *ngIf="passeggeriSelezionati">
+    <button (click)="prenotaVolo()" [disabled]="!postoSelezionato">Conferma Prenotazione</button>
+  </div>
+</div>

@@ -1,0 +1,184 @@
+.prenota-volo {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.prenota-volo h2 {
+  text-align: center;
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.prenota-volo p {
+  font-size: 1rem;
+  margin: 8px 0;
+}
+
+.prenota-volo p strong {
+  font-weight: bold;
+  color: #2a7ae2;
+}
+
+.prenota-volo p:last-child {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #e53e3e;
+}
+
+.prenota-volo button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.prenota-volo button:hover {
+  background-color: #45a049;
+}
+
+.seleziona-posto {
+  margin-top: 20px;
+}
+
+.aereo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonne per i posti */
+  gap: 10px; /* Distanza tra i posti */
+  justify-items: center;
+  margin-top: 20px;
+}
+
+.aereo div {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ececec;
+  border-radius: 50%;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 18px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.aereo div.libero {
+  background-color: #8bc34a; /* verde per posti liberi */
+  transition: background-color 0.3s ease;
+}
+
+.aereo div.occupato {
+  background-color: #f44336; /* rosso per posti occupati */
+}
+
+.aereo div.selezionato {
+  background-color: #2196f3; /* blu per posti selezionati */
+  transform: scale(1.1); /* ingrandisce il posto selezionato */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* ombra per l'effetto selezione */
+}
+
+.aereo div.libero.selezionato {
+  background-color: #ff9800; /* colore cambiato quando un posto libero viene selezionato */
+}
+
+.aereo div:hover {
+  background-color: #ffeb3b; /* giallo per hover */
+  transform: scale(1.1); /* ingrandisce leggermente il posto al passaggio del mouse */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* ombra per hover */
+}
+
+/* Stile per il form */
+.prenota-volo form {
+  margin-top: 20px;
+}
+
+.prenota-volo label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.prenota-volo input[type="number"],
+.prenota-volo input[type="text"],
+.prenota-volo input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.prenota-volo input[type="number"]:focus,
+.prenota-volo input[type="text"]:focus,
+.prenota-volo input[type="date"]:focus {
+  border-color: #2a7ae2;
+  outline: none;
+}
+
+.prenota-volo button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.prenota-volo button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 600px) {
+  .prenota-volo {
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  .prenota-volo h2 {
+    font-size: 1.2rem;
+  }
+
+  .prenota-volo p {
+    font-size: 0.9rem;
+  }
+}
+/* Stile per la select */
+.prenota-volo select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333; /* Colore per il testo */
+  box-sizing: border-box;
+}
+
+.prenota-volo option {
+  font-size: 1rem;
+  color: #333; /* Impostazione colore del testo per le opzioni */
+}
+
+
+
