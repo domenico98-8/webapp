@@ -1,0 +1,144 @@
+/* Contenitore della registrazione */
+:host {
+  display: flex;
+  justify-content: center; /* Centro orizzontale */
+  align-items: center; /* Centro verticale */
+  height: 90vh; /* Assicura che il contenitore riempia l'intera altezza della finestra */
+}
+
+.registration-container {
+  text-align: center; /* Centra il testo all'interno del contenitore */
+  padding: 2rem; /* Margine interno */
+  border: 1px solid #ccc; /* Bordo sottile */
+  border-radius: 10px; /* Angoli arrotondati */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombreggiatura */
+  background-color: #fff; /* Sfondo bianco */
+  max-width: 400px; /* Larghezza massima del contenitore */
+  width: 100%; /* Adattabile */
+}
+
+/* Logo (se richiesto) */
+.logo img {
+  max-width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Titolo */
+h1 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Gruppi di form */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left; /* Allinea a sinistra i campi del form */
+}
+
+label {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 5px;
+  display: block; /* Forza il label su una nuova riga */
+}
+
+/* Input generici */
+input[type="text"],
+input[type="password"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Colore al focus */
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Pulsante */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:disabled {
+  background-color: rgba(0, 123, 255, 0.6);
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Collegamenti (ad esempio per tornare al login o creare un'utenza) */
+.registration-links {
+  margin-top: 15px;
+}
+
+.registration-links a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: #007bff;
+  transition: color 0.3s;
+}
+
+.registration-links a:hover {
+  color: #0056b3;
+}
+
+/* Errori di validazione */
+.error {
+  color: red;
+  font-size: 0.8rem;
+  text-align: left;
+  margin-top: 5px;
+}
+
+/* Layout responsivo */
+@media (max-width: 576px) {
+  .registration-container {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+.back-to-login {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.back-to-login a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: #007bff;
+  transition: color 0.3s;
+}
+
+.back-to-login a:hover {
+  color: #0056b3;
+}

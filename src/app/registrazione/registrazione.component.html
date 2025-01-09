@@ -1,0 +1,83 @@
+<div class="registration-container">
+  <h2>Registrazione Utente</h2>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <!-- Nome -->
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input
+        type="text"
+        id="nome"
+        formControlName="nome"
+        class="form-control"
+      />
+      <div *ngIf="registrationForm.get('nome')?.invalid && registrationForm.get('nome')?.touched" class="error">
+        Nome è obbligatorio e deve avere almeno 2 caratteri.
+      </div>
+    </div>
+
+    <!-- Cognome -->
+    <div class="form-group">
+      <label for="cognome">Cognome</label>
+      <input
+        type="text"
+        id="cognome"
+        formControlName="cognome"
+        class="form-control"
+      />
+      <div *ngIf="registrationForm.get('cognome')?.invalid && registrationForm.get('cognome')?.touched" class="error">
+        Cognome è obbligatorio e deve avere almeno 2 caratteri.
+      </div>
+    </div>
+
+    <!-- Documento -->
+    <div class="form-group">
+      <label for="documento">Documento (Obbligatorio)</label>
+      <input
+        type="text"
+        id="documento"
+        formControlName="documento"
+        class="form-control"
+      />
+      <div *ngIf="registrationForm.get('documento')?.invalid && registrationForm.get('documento')?.touched" class="error">
+        Documento è obbligatorio.
+      </div>
+    </div>
+
+    <!-- Sesso -->
+    <div class="form-group">
+      <label for="sesso">Sesso</label>
+      <select id="sesso" formControlName="sesso" class="form-control">
+        <option value="" disabled>Seleziona il sesso</option>
+        <option value="Maschio">Maschio</option>
+        <option value="Femmina">Femmina</option>
+        <option value="Altro">Altro</option>
+      </select>
+      <div *ngIf="registrationForm.get('sesso')?.invalid && registrationForm.get('sesso')?.touched" class="error">
+        Seleziona il sesso.
+      </div>
+    </div>
+
+    <!-- Data di nascita -->
+    <div class="form-group">
+      <label for="dataNascita">Data di Nascita</label>
+      <input
+        type="date"
+        id="dataNascita"
+        formControlName="dataNascita"
+        class="form-control"
+      />
+      <div *ngIf="registrationForm.get('dataNascita')?.invalid && registrationForm.get('dataNascita')?.touched" class="error">
+        Data di nascita è obbligatoria.
+      </div>
+    </div>
+
+    <!-- Pulsante di invio -->
+    <button type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid">
+      Registrati
+    </button>
+
+    <div class="back-to-login">
+      <a routerLink="/login">Torna al login</a>
+    </div>
+  </form>
+</div>
