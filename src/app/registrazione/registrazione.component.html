@@ -1,6 +1,24 @@
 <div class="registration-container">
+  <!-- Logo -->
+  <div class="logo">
+    <img src="https://flysky.kg/wp-content/uploads/2021/02/cropped-logo-resized.png" alt="Logo"> <!-- Aggiorna con il path corretto del logo -->
+  </div>
   <h2>Registrazione Utente</h2>
+  <hr>
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <!--email-->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="text"
+        id="email"
+        formControlName="email"
+        class="form-control"
+      />
+      <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched" class="error">
+        Email è obbligatorio.
+      </div>
+    </div>
     <!-- Nome -->
     <div class="form-group">
       <label for="nome">Nome</label>
@@ -68,6 +86,19 @@
       />
       <div *ngIf="registrationForm.get('dataNascita')?.invalid && registrationForm.get('dataNascita')?.touched" class="error">
         Data di nascita è obbligatoria.
+      </div>
+    </div>
+    <!--password-->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="form-control"
+      />
+      <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched" class="error">
+        Password obbligatoria.
       </div>
     </div>
 

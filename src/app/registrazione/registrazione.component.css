@@ -3,44 +3,45 @@
   display: flex;
   justify-content: center; /* Centro orizzontale */
   align-items: center; /* Centro verticale */
-  height: 90vh; /* Assicura che il contenitore riempia l'intera altezza della finestra */
+  height: 100vh; /* Imposta l'altezza dell'intera finestra */
 }
 
 .registration-container {
   text-align: center; /* Centra il testo all'interno del contenitore */
-  padding: 2rem; /* Margine interno */
+  padding: 1rem; /* Ridotto il margine interno */
   border: 1px solid #ccc; /* Bordo sottile */
-  border-radius: 10px; /* Angoli arrotondati */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombreggiatura */
+  border-radius: 8px; /* Angoli arrotondati più piccoli */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Ombreggiatura più leggera */
   background-color: #fff; /* Sfondo bianco */
-  max-width: 400px; /* Larghezza massima del contenitore */
-  width: 100%; /* Adattabile */
+  width: 400px; /* Larghezza fissa */
+  height: 680px; /* Altezza fissa */
+  overflow-y: auto;
 }
 
 /* Logo (se richiesto) */
 .logo img {
-  max-width: 150px;
+  max-width: 100px; /* Dimensione ancora più piccola per il logo */
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* Titolo */
 h1 {
-  font-size: 1.8rem;
+  font-size: 1.2rem; /* Ridotta dimensione del titolo */
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* Ridotto spazio sotto il titolo */
 }
 
 /* Gruppi di form */
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 8px; /* Spaziatura ridotta */
   text-align: left; /* Allinea a sinistra i campi del form */
 }
 
 label {
-  font-size: 0.9rem;
+  font-size: 0.8rem; /* Ridotta dimensione del testo */
   color: #555;
-  margin-bottom: 5px;
+  margin-bottom: 4px; /* Ridotto spazio sotto il label */
   display: block; /* Forza il label su una nuova riga */
 }
 
@@ -50,8 +51,8 @@ input[type="password"],
 input[type="date"],
 select {
   width: 100%;
-  padding: 10px;
-  font-size: 1rem;
+  padding: 6px; /* Ridotto il padding */
+  font-size: 0.85rem; /* Ridotta dimensione del font */
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box;
@@ -70,8 +71,8 @@ select:focus {
 .btn {
   display: block;
   width: 100%;
-  padding: 10px;
-  font-size: 1rem;
+  padding: 6px; /* Ridotto il padding */
+  font-size: 0.85rem; /* Ridotta dimensione del font */
   color: #fff;
   background-color: #007bff;
   border: none;
@@ -90,12 +91,12 @@ select:focus {
 
 /* Collegamenti (ad esempio per tornare al login o creare un'utenza) */
 .registration-links {
-  margin-top: 15px;
+  margin-top: 8px; /* Ridotto spazio sopra i link */
 }
 
 .registration-links a {
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.8rem; /* Ridotta dimensione del font */
   color: #007bff;
   transition: color 0.3s;
 }
@@ -107,7 +108,7 @@ select:focus {
 /* Errori di validazione */
 .error {
   color: red;
-  font-size: 0.8rem;
+  font-size: 0.7rem; /* Ulteriore riduzione del font */
   text-align: left;
   margin-top: 5px;
 }
@@ -115,30 +116,38 @@ select:focus {
 /* Layout responsivo */
 @media (max-width: 576px) {
   .registration-container {
-    padding: 1.5rem;
+    padding: 0.8rem; /* Ulteriore riduzione del padding */
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1rem; /* Ridotta dimensione del titolo */
   }
 
   .btn {
-    font-size: 0.9rem;
-    padding: 8px;
+    font-size: 0.75rem; /* Ulteriore riduzione della dimensione del font */
+    padding: 5px; /* Ulteriore riduzione del padding */
   }
 }
+
 .back-to-login {
-  margin-top: 20px;
+  margin-top: 10px; /* Ridotto il margine */
   text-align: center;
 }
 
 .back-to-login a {
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.8rem; /* Ridotta dimensione del font */
   color: #007bff;
   transition: color 0.3s;
 }
 
 .back-to-login a:hover {
   color: #0056b3;
+}
+
+/* Logo */
+.logo img {
+  max-width: 80px; /* Dimensione molto ridotta del logo */
+  height: auto;
+  margin-bottom: 10px;
 }

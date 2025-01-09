@@ -39,11 +39,7 @@ export class LoginComponent {
         // Salva il token nel localStorage
         this.authService.saveToken(token);
 
-        this.router.navigate(['/home-page']).then(() => {
-          const token = this.authService.getToken();
-          const isAuthenticated = token !== null && token.trim().length > 0;
-          this.loginService.authenticateNavBar(isAuthenticated);
-        });
+        this.router.navigate(['/home-page']);
       },
       (error) => {
         console.error('Errore durante l\'accesso:', error);

@@ -7,18 +7,10 @@ import {LoginService} from "./services/login.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit,DoCheck{
+export class AppComponent implements DoCheck{
   private isAuthenticated = false;
 
   constructor(private authService: AuthService,private loginService: LoginService) {
-  }
-
-  ngOnInit(): void {
-    if(!this.isAuthenticated) {
-      this.loginService.getAuthenticate().subscribe((auth) => {
-        this.isAuthenticated = auth;
-      })
-    }
   }
 
   checkAuthentication(): void {

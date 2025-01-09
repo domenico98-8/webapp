@@ -20,9 +20,7 @@ export class NavbarComponent {
   logout() {
     if(this.authService.isAuthenticated()){
       this.authService.removeToken();
-      this.router.navigate(['/login']).then(() => {
-        this.loginService.authenticateNavBar(this.authService.isAuthenticated());
-      });
+      this.router.navigate(['/login']);
     }
 
   }
