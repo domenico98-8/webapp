@@ -14,6 +14,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
 import {AuthInterceptor} from "./auth.interceptor";
 import { PrenotaVoloComponent } from './prenota-volo/prenota-volo.component';
+import { RegistrazioneComponent } from './registrazione/registrazione.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { PrenotaVoloComponent } from './prenota-volo/prenota-volo.component';
     SearchResultsComponent,
     HomePageComponent,
     LoginComponent,
-    PrenotaVoloComponent
+    PrenotaVoloComponent,
+    RegistrazioneComponent
   ],
     imports: [
         BrowserModule,

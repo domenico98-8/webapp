@@ -80,17 +80,17 @@ input[type="password"]:focus {
 }
 
 /* Collegamento per il recupero password */
-.forgot-password {
+.forgot-password,crea-utenza {
   margin-top: 15px;
 }
 
-.forgot-password a {
+.forgot-password,crea-utenza a {
   text-decoration: none;
   font-size: 0.9rem;
   color: #007bff;
   transition: color 0.3s;
 }
 
-.forgot-password a:hover {
+.forgot-password,crea-utenza a:hover {
   color: #0056b3;
 }

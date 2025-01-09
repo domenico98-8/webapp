@@ -4,12 +4,14 @@ import {HomePageComponent} from "./home-page/home-page.component";
 import {LoginComponent} from "./login/login.component";
 import {AuthGuard} from "./auth.guard";
 import {PrenotaVoloComponent} from "./prenota-volo/prenota-volo.component";
+import {RegistrazioneComponent} from "./registrazione/registrazione.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'home-page', component: HomePageComponent, canActivate: [AuthGuard] },
   { path: 'prenota-volo', component: PrenotaVoloComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'registrazione', component: RegistrazioneComponent },
 ];
 
 @NgModule({

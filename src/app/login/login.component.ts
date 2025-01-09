@@ -40,8 +40,9 @@ export class LoginComponent {
         this.authService.saveToken(token);
 
         this.router.navigate(['/home-page']).then(() => {
-          // Esegui il refresh della pagina
-          window.location.reload();
+          const token = this.authService.getToken();
+          const isAuthenticated = token !== null && token.trim().length > 0;
+          this.loginService.authenticateNavBar(isAuthenticated);
         });
       },
       (error) => {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../services/auth.service";
+import {LoginService} from "../services/login.service";
 
 @Component({
   selector: 'app-navbar',
@@ -9,22 +10,18 @@ import {AuthService} from "../services/auth.service";
 })
 export class NavbarComponent {
 
-  constructor(private router: Router,private authService:AuthService) {}
+  constructor(private router: Router,private authService:AuthService,private loginService:LoginService) { }
 
   navigateToHome(event: Event): void {
     event.preventDefault();
-    this.router.navigate(['/home-page']).then(() => {
-      // Esegui il refresh della pagina
-      window.location.reload();
-    }); // Reindirizza alla rotta /home
+    this.router.navigate(['/home-page']);
   }
 
   logout() {
     if(this.authService.isAuthenticated()){
       this.authService.removeToken();
       this.router.navigate(['/login']).then(() => {
-        // Esegui il refresh della pagina
-        window.location.reload();
+        this.loginService.authenticateNavBar(this.authService.isAuthenticated());
       });
     }
 
