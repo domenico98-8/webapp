@@ -2,6 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {PostiServices} from "../services/posti.services";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {BookService} from "../services/prenotazione.service";
+import {UtenteRequest} from "../modelli/Utente";
+import {PostoResponse} from "../modelli/Posto";
+import {PrenotazioneRequest} from "../modelli/Prenotazione";
 
 @Component({
   selector: 'app-prenota-volo',
@@ -17,11 +21,11 @@ export class PrenotaVoloComponent implements OnInit  {
   @Input() prezzo!: number;
 
   numeroPasseggeri: number = 0;
-  passeggeriForm: FormGroup;
-  passeggeri: any[] = [];
+  numeroPasseggeriForm: FormGroup; //form selezione numeri
+  passeggeriForms: FormGroup[] = []; //form del passeggeri
   passeggeriSelezionati: boolean = false;
 
-  postiSelezionati: number[] = []; // Array per tracciare i posti selezionati
+  postiSelezionati: any[] = []; // Array per tracciare i posti selezionati
 
   // Struttura per la mappa dei posti sull'aereo
   aereo: any = [];
@@ -29,9 +33,9 @@ export class PrenotaVoloComponent implements OnInit  {
   // Variabile per tracciare il posto selezionato
   postoSelezionato: string | null = null;
 
-  constructor(private route: ActivatedRoute,private postiService:PostiServices, private fb: FormBuilder) {
-    this.passeggeriForm = this.fb.group({
-      numeroPasseggeri: [1, [Validators.required, Validators.min(1), Validators.max(10)]]
+  constructor(private route: ActivatedRoute,private postiService:PostiServices, private fb: FormBuilder, private bookService: BookService) {
+    this.numeroPasseggeriForm = this.fb.group({
+      numeroPasseggeri: [1, [Validators.required, Validators.min(1), Validators.max(10)]],
     });
   }
 
@@ -78,12 +82,13 @@ export class PrenotaVoloComponent implements OnInit  {
 
 
   selezionaPasseggeri() {
-    this.numeroPasseggeri = this.passeggeriForm.get('numeroPasseggeri')?.value;
-    this.passeggeri = [];
+    this.numeroPasseggeri = this.numeroPasseggeriForm.get('numeroPasseggeri')?.value;
+    this.passeggeriForms = [];
     for (let i = 0; i < this.numeroPasseggeri; i++) {
-      this.passeggeri.push(this.fb.group({
+      this.passeggeriForms.push(this.fb.group({
         nome: ['', Validators.required],
         cognome: ['', Validators.required],
+        documento: ['', Validators.required],
         dataNascita: ['', Validators.required],
         sesso: ['', Validators.required],
       }));
@@ -109,10 +114,43 @@ export class PrenotaVoloComponent implements OnInit  {
   }
 
   prenotaVolo() {
-    if (this.postoSelezionato) {
-      alert(`Prenotazione confermata per il volo. Posto selezionato: ${this.postoSelezionato}`);
+
+    if (this.postiSelezionati!=null && this.postiSelezionati.length > 0 && this.passeggeriForms!=null && this.passeggeriForms.length > 0 && this.codiceVolo!='') {
+      const richiestaPrenotazione= this.generaRichiestaPrenotazione(this.passeggeriForms,this.postiSelezionati,this.codiceVolo);
+      this.bookService.bookFly(richiestaPrenotazione).subscribe(book => {
+        if (book) {}
+      },
+        err => {
+        console.log(err);
+        })
     } else {
       alert("Per favore, seleziona un posto.");
     }
+  }
+
+  generaRichiestaPrenotazione(formPasseggeri:FormGroup[],postiSelezionati:any,codiceVolo:string):PrenotazioneRequest {
+    const passeggeri:UtenteRequest[]=[];
+    for (let i = 0; i < formPasseggeri.length; i++) {
+      const user:UtenteRequest=new UtenteRequest();
+      user.nome=formPasseggeri[i].get('nome')?.value;
+      user.dataNascita=formPasseggeri[i].get('dataNascita')?.value;
+      user.cognome=formPasseggeri[i].get('cognome')?.value;
+      user.sesso=formPasseggeri[i].get('sesso')?.value;
+      user.documento=formPasseggeri[i].get('documento')?.value;
+      passeggeri.push(user);
+    }
+    const posti:PostoResponse[]=[];
+    for(let i=0;i<postiSelezionati.length;i++){
+      const posto:PostoResponse=new PostoResponse();
+      posto.numeroPosto=postiSelezionati[i];
+      posti.push(posto);
+    }
+    const prenotazione:PrenotazioneRequest={
+      passeggeri: passeggeri,
+      posti: posti,
+      costo:this.prezzo,
+      volo: codiceVolo
+    };
+    return prenotazione;
   }
 }

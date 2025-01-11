@@ -10,7 +10,7 @@
   <!-- Form per la selezione del numero di passeggeri -->
   <div *ngIf="!passeggeriSelezionati">
     <h3>Seleziona il numero di passeggeri</h3>
-    <form [formGroup]="passeggeriForm" (ngSubmit)="selezionaPasseggeri()">
+    <form [formGroup]="numeroPasseggeriForm" (ngSubmit)="selezionaPasseggeri()">
       <label for="numeroPasseggeri">Numero di passeggeri:</label>
       <input id="numeroPasseggeri" type="number" formControlName="numeroPasseggeri" min="1" max="10" />
       <button type="submit">Continua</button>
@@ -22,7 +22,7 @@
     <!-- Pulsante per tornare indietro alla selezione dei passeggeri -->
     <button (click)="annullaDettagliPasseggeri()">Torna indietro</button>
     <h3>Inserisci i dettagli dei passeggeri</h3>
-    <form *ngFor="let passeggero of passeggeri; let i = index" [formGroup]="passeggero">
+    <form *ngFor="let passeggero of passeggeriForms; let i = index" [formGroup]="passeggero">
       <div>
         <h4>Passeggero {{ i + 1 }}</h4>
         <label for="nome{{i}}">Nome:</label>
@@ -40,6 +40,10 @@
           <option value="F">F</option>
           <option value="ND">Preferisco non dirlo</option>
         </select>
+      </div>
+      <div>
+        <label for="documento{{i}}">Documento:</label>
+        <input id="documento{{i}}" type="text" formControlName="documento" required />
       </div>
       <div>
         <label for="dataNascita{{i}}">Data di nascita:</label>

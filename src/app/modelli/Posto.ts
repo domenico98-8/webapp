@@ -1,4 +1,7 @@
-export interface PostoResponse {
-  stato:boolean,
-  numeroPosti:string
+export class PostoResponse {
+  stato!:boolean;
+  numeroPosto!:string;
+
+  constructor() {
+  }
 }
