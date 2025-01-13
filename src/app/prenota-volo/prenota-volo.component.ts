@@ -6,6 +6,7 @@ import {BookService} from "../services/prenotazione.service";
 import {UtenteRequest} from "../modelli/Utente";
 import {PostoResponse} from "../modelli/Posto";
 import {PrenotazioneRequest} from "../modelli/Prenotazione";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-prenota-volo',
@@ -33,7 +34,8 @@ export class PrenotaVoloComponent implements OnInit  {
   // Variabile per tracciare il posto selezionato
   postoSelezionato: string | null = null;
 
-  constructor(private route: ActivatedRoute,private postiService:PostiServices, private fb: FormBuilder, private bookService: BookService) {
+  constructor(private route: ActivatedRoute,private postiService:PostiServices, private fb: FormBuilder, private bookService: BookService,
+              private authService:AuthService) {
     this.numeroPasseggeriForm = this.fb.group({
       numeroPasseggeri: [1, [Validators.required, Validators.min(1), Validators.max(10)]],
     });
@@ -118,7 +120,9 @@ export class PrenotaVoloComponent implements OnInit  {
     if (this.postiSelezionati!=null && this.postiSelezionati.length > 0 && this.passeggeriForms!=null && this.passeggeriForms.length > 0 && this.codiceVolo!='') {
       const richiestaPrenotazione= this.generaRichiestaPrenotazione(this.passeggeriForms,this.postiSelezionati,this.codiceVolo);
       this.bookService.bookFly(richiestaPrenotazione).subscribe(book => {
-        if (book) {}
+        if (book.status=='202') {
+          alert("Prenotazione Effettuata con successo!");
+        }
       },
         err => {
         console.log(err);
@@ -149,7 +153,8 @@ export class PrenotaVoloComponent implements OnInit  {
       passeggeri: passeggeri,
       posti: posti,
       costo:this.prezzo,
-      volo: codiceVolo
+      volo: codiceVolo,
+      idUtente:+this.authService.getUser()
     };
     return prenotazione;
   }

@@ -1,0 +1,33 @@
+import {Component, OnInit} from '@angular/core';
+import {PrenotazioneResponse} from "../modelli/Prenotazione";
+import {BookService} from "../services/prenotazione.service";
+import {AuthService} from "../services/auth.service";
+
+@Component({
+  selector: 'app-le-mie-prenotazioni',
+  templateUrl: './le-mie-prenotazioni.component.html',
+  styleUrls: ['./le-mie-prenotazioni.component.css']
+})
+export class LeMiePrenotazioniComponent implements OnInit {
+
+  prenotazioni:PrenotazioneResponse[] = [];
+
+  constructor(private bookService:BookService,private authService:AuthService) { }
+
+  ngOnInit(): void {
+    this.bookService.getMyBook(this.authService.getUser()).subscribe((prenotazioni:PrenotazioneResponse[]) => {
+      this.prenotazioni=prenotazioni;
+    },
+      (error) => {
+        console.log(error);
+      })
+  }
+
+  checkIn(codicePrenotazione: string): void {
+    alert(`Check-in eseguito per la prenotazione: ${codicePrenotazione}`);
+  }
+
+  apriInfo(codicePrenotazione: string): void {
+    alert(`Informazioni del biglietto per: ${codicePrenotazione}`);
+  }
+}

@@ -34,12 +34,16 @@ export class LoginComponent {
 
     this.loginService.login(this.email, this.hash).subscribe(
       (token: string) => {
-        console.log('Token ricevuto:', token);
+        const tokenId:string[]=token.split(';');
 
         // Salva il token nel localStorage
-        this.authService.saveToken(token);
-
-        this.router.navigate(['/home-page']);
+        if(tokenId.length == 2){
+          this.authService.saveToken(tokenId[0]);
+          this.authService.saveUser(tokenId[1]);
+          this.router.navigate(['/home-page']);
+        }else {
+          alert('Erroe Imprevisto!');
+        }
       },
       (error) => {
         console.error('Errore durante l\'accesso:', error);

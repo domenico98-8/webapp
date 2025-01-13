@@ -25,4 +25,9 @@ export class NavbarComponent {
 
   }
 
+  navigateToLeMiePrenotazioni(event: Event){
+    event.preventDefault();
+    this.router.navigate(['/le-mie-prenotazioni']);
+  }
+
 }

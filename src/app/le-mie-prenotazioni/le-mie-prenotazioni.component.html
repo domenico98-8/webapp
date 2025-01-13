@@ -1,0 +1,27 @@
+<div class="biglietti-container">
+  <div *ngFor="let prenotazione of prenotazioni" class="biglietto">
+    <div class="biglietto-header">
+      <h3>{{ prenotazione.origine }} ➝ {{ prenotazione.destinazione }}</h3>
+      <p class="codice-prenotazione">Codice Prenotazione: <strong>{{ prenotazione.codicePrenotazione }}</strong></p>
+    </div>
+    <div class="linea-tratteggiata"></div>
+    <div class="biglietto-body">
+      <div class="info">
+        <p><strong>Partenza:</strong> {{ prenotazione.origine }}</p>
+        <p><strong>Destinazione:</strong> {{ prenotazione.destinazione }}</p>
+      </div>
+      <div class="info">
+        <p><strong>Orario Volo:</strong> {{ prenotazione.orario }}</p>
+        <p><strong>Num. Passeggeri:</strong> {{ prenotazione.numero_passeggeri }}</p>
+      </div>
+    </div>
+    <div class="linea-tratteggiata"></div>
+    <div class="biglietto-footer">
+      <p>Grazie per aver scelto la nostra compagnia!</p>
+    </div>
+    <div class="biglietto-azioni">
+      <button (click)="checkIn(prenotazione.codicePrenotazione)" class="btn btn-checkin">Esegui Check-in</button>
+      <button (click)="apriInfo(prenotazione.codicePrenotazione)" class="btn btn-info">Info Biglietto</button>
+    </div>
+  </div>
+</div>
