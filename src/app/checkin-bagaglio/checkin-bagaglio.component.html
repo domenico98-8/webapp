@@ -5,8 +5,8 @@
       <div
         *ngFor="let bagaglio of bagagliDisponibili"
         class="bagaglio-opzione"
-        [class.selezionato]="p.id === bagaglio.id"
-        (click)="onBagaglioSelect(p.id, bagaglio)"
+        [class.selezionato]=postoSelzionato(p,bagaglio)
+        (click)="onBagaglioSelect(p, bagaglio)"
       >
         <div class="tipo-bagaglio">{{ bagaglio.descrizione }}</div>
         <div class="dettagli">

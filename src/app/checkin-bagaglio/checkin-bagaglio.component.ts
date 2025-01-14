@@ -21,17 +21,30 @@ export class CheckinBagaglioComponent implements OnInit {
 
   prenotazione: PrenotazioneBagaglio[] = [];
 
-  @Output() bagaglioSelezionato = new EventEmitter<PrenotazioneBagaglio>();
-
   constructor(private route:ActivatedRoute,private bagaglioService:BagaglioService, private prenotazioneService:BookService) {
   }
 
-  onBagaglioSelect(cliente: number, bagaglio: Bagaglio): void {
-    const prenotazioneCliente = this.prenotazione.find(p => p.idCliente === cliente);
-    if (prenotazioneCliente) {
-      prenotazioneCliente.bagaglioSelezionato = bagaglio;
-      this.bagaglioSelezionato.emit(prenotazioneCliente);
+  onBagaglioSelect(cliente: Cliente, bagaglio: Bagaglio): void {
+    const prenotazione=this.prenotazione.find(prenotazione=>prenotazione.cliente.id === cliente.id);
+    if(!prenotazione){
+      const nuovaPrenotazione:PrenotazioneBagaglio={
+        cliente:cliente,
+        bagaglio:bagaglio,
+      }
+      this.prenotazione.push(nuovaPrenotazione);
+    }else{
+      this.prenotazione.forEach((prenotazione:PrenotazioneBagaglio)=>{if(prenotazione.cliente.id === cliente.id){
+        prenotazione.bagaglio=bagaglio;
+      }})
     }
+  }
+
+  postoSelzionato(cliente: Cliente, bagaglio: Bagaglio):boolean{
+    const prenotazione=this.prenotazione.find(prenotazione=>prenotazione.cliente.id === cliente.id && prenotazione.bagaglio==bagaglio);
+    if(prenotazione){
+      return true;
+    }else return false;
+
   }
 
   ngOnInit(): void {
