@@ -1,0 +1,18 @@
+<div class="bagaglio-selector">
+  <div *ngFor="let p of clienti">
+    <h3>Seleziona il bagaglio per {{ p.nome }}</h3>
+    <div class="bagaglio-opzioni">
+      <div
+        *ngFor="let bagaglio of bagagliDisponibili"
+        class="bagaglio-opzione"
+        [class.selezionato]="p.id === bagaglio.id"
+        (click)="onBagaglioSelect(p.id, bagaglio)"
+      >
+        <div class="tipo-bagaglio">{{ bagaglio.descrizione }}</div>
+        <div class="dettagli">
+          <span>Peso: {{ bagaglio.peso }} kg</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

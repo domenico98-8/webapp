@@ -16,6 +16,7 @@ import {AuthInterceptor} from "./auth.interceptor";
 import { PrenotaVoloComponent } from './prenota-volo/prenota-volo.component';
 import { RegistrazioneComponent } from './registrazione/registrazione.component';
 import { LeMiePrenotazioniComponent } from './le-mie-prenotazioni/le-mie-prenotazioni.component';
+import { CheckinBagaglioComponent } from './checkin-bagaglio/checkin-bagaglio.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { LeMiePrenotazioniComponent } from './le-mie-prenotazioni/le-mie-prenota
     LoginComponent,
     PrenotaVoloComponent,
     RegistrazioneComponent,
-    LeMiePrenotazioniComponent
+    LeMiePrenotazioniComponent,
+    CheckinBagaglioComponent
   ],
     imports: [
         BrowserModule,

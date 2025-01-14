@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {PostiServices} from "../services/posti.services";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BookService} from "../services/prenotazione.service";
@@ -35,7 +35,7 @@ export class PrenotaVoloComponent implements OnInit  {
   postoSelezionato: string | null = null;
 
   constructor(private route: ActivatedRoute,private postiService:PostiServices, private fb: FormBuilder, private bookService: BookService,
-              private authService:AuthService) {
+              private authService:AuthService, private router: Router) {
     this.numeroPasseggeriForm = this.fb.group({
       numeroPasseggeri: [1, [Validators.required, Validators.min(1), Validators.max(10)]],
     });
@@ -122,6 +122,7 @@ export class PrenotaVoloComponent implements OnInit  {
       this.bookService.bookFly(richiestaPrenotazione).subscribe(book => {
         if (book.status=='202') {
           alert("Prenotazione Effettuata con successo!");
+          this.router.navigate(['/le-mie-prenotazioni']);
         }
       },
         err => {

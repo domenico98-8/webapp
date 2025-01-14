@@ -1,5 +1,6 @@
 import {UtenteRequest} from "./Utente";
 import {PostoResponse} from "./Posto";
+import {Bagaglio} from "./Bagaglio";
 
 export class PrenotazioneRequest{
   passeggeri!:UtenteRequest[];
@@ -11,6 +12,12 @@ export class PrenotazioneRequest{
   constructor() {
   }
 
+}
+
+export interface PrenotazioneBagaglio {
+  idCliente: number;
+  idPrenotazione: number;
+  bagaglioSelezionato: Bagaglio | null;
 }
 
 export class PrenotazioneResponse{

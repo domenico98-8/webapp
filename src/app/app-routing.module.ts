@@ -6,12 +6,14 @@ import {AuthGuard} from "./auth.guard";
 import {PrenotaVoloComponent} from "./prenota-volo/prenota-volo.component";
 import {RegistrazioneComponent} from "./registrazione/registrazione.component";
 import {LeMiePrenotazioniComponent} from "./le-mie-prenotazioni/le-mie-prenotazioni.component";
+import {CheckinBagaglioComponent} from "./checkin-bagaglio/checkin-bagaglio.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'home-page', component: HomePageComponent, canActivate: [AuthGuard] },
   { path: 'prenota-volo', component: PrenotaVoloComponent, canActivate: [AuthGuard] },
-  { path: 'le-mie-prenotazioni', component: LeMiePrenotazioniComponent/*, canActivate: [AuthGuard]*/ },
+  { path: 'le-mie-prenotazioni', component: LeMiePrenotazioniComponent, canActivate: [AuthGuard]},
+  { path: 'checkin-bagaglio', component: CheckinBagaglioComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'registrazione', component: RegistrazioneComponent },
 ];

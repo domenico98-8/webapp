@@ -1,0 +1,57 @@
+.bagaglio-selector {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Larghezza fissa */
+  max-width: 100%;
+  margin: 0 auto; /* Centra il contenitore */
+  overflow-y: auto; /* Abilita lo scorrimento orizzontale */
+}
+
+h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+.bagaglio-opzioni {
+  display: flex;
+  flex-direction: column;white-space: nowrap; /* Evita il ritorno a capo per le opzioni */
+}
+
+
+.bagaglio-opzione {
+  background-color: #fff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.bagaglio-opzione:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.bagaglio-opzione.selezionato {
+  background-color: #d1e7dd;
+  border-left: 5px solid #198754;
+}
+
+.tipo-bagaglio {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.dettagli {
+  font-size: 14px;
+  color: #555;
+}
+
+.dettagli span {
+  display: block;
+  margin-top: 5px;
+}

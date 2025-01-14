@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {PrenotazioneRequest, PrenotazioneResponse} from "../modelli/Prenotazione";
+import {Cliente} from "../modelli/Cliente";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,10 @@ export class BookService {
 
   public getMyBook(idUtente: number): Observable<PrenotazioneResponse[]> {
     return this.http.get<PrenotazioneResponse[]>(`${this.apiUrl}/le-mie-prenotazioni/${idUtente}`);
+  }
+
+  public getClienti(idPrenotazione: any): Observable<Cliente[]>{
+    return this.http.get<Cliente[]>(`${this.apiUrl}/getClientiFromPrenotazione/${idPrenotazione}`);
   }
 
 
