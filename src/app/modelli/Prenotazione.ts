@@ -17,7 +17,7 @@ export class PrenotazioneRequest{
 
 export interface PrenotazioneBagaglio {
   cliente: Cliente;
-  bagaglio: Bagaglio;
+  bagaglio: Bagaglio|null;
 }
 
 export class PrenotazioneResponse{

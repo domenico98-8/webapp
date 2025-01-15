@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {PrenotazioneRequest, PrenotazioneResponse} from "../modelli/Prenotazione";
+import {PrenotazioneBagaglio, PrenotazioneRequest, PrenotazioneResponse} from "../modelli/Prenotazione";
 import {Cliente} from "../modelli/Cliente";
 
 @Injectable({
@@ -23,6 +23,10 @@ export class BookService {
 
   public getClienti(idPrenotazione: any): Observable<Cliente[]>{
     return this.http.get<Cliente[]>(`${this.apiUrl}/getClientiFromPrenotazione/${idPrenotazione}`);
+  }
+
+  public checkin(prenotazione:PrenotazioneBagaglio[]){
+    return this.http.post(`${this.apiUrl}/checkin`, prenotazione,{ responseType: 'text' });
   }
 
 

@@ -34,7 +34,11 @@ export class CheckinBagaglioComponent implements OnInit {
       this.prenotazione.push(nuovaPrenotazione);
     }else{
       this.prenotazione.forEach((prenotazione:PrenotazioneBagaglio)=>{if(prenotazione.cliente.id === cliente.id){
-        prenotazione.bagaglio=bagaglio;
+        if(prenotazione.bagaglio==bagaglio){
+          prenotazione.bagaglio=null;
+        }else {
+          prenotazione.bagaglio = bagaglio;
+        }
       }})
     }
   }
@@ -45,6 +49,17 @@ export class CheckinBagaglioComponent implements OnInit {
       return true;
     }else return false;
 
+  }
+
+  checkBagagli():boolean{
+    if(this.prenotazione.length==this.clienti.length){
+      for(let prenotazioe of this.prenotazione){
+        if(prenotazioe.bagaglio==null){
+          return true;
+        }
+      }
+      return false;
+    }else return true;
   }
 
   ngOnInit(): void {
@@ -64,6 +79,12 @@ export class CheckinBagaglioComponent implements OnInit {
       error => {
       console.log(error);
       });
+  }
+
+  terminaCheckin(){
+    this.prenotazioneService.checkin(this.prenotazione).subscribe(checkin=>{
+      alert(checkin);
+    })
   }
 }
 

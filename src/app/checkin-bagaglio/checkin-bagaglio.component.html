@@ -1,18 +1,24 @@
-<div class="bagaglio-selector">
-  <div *ngFor="let p of clienti">
-    <h3>Seleziona il bagaglio per {{ p.nome }}</h3>
-    <div class="bagaglio-opzioni">
-      <div
-        *ngFor="let bagaglio of bagagliDisponibili"
-        class="bagaglio-opzione"
-        [class.selezionato]=postoSelzionato(p,bagaglio)
-        (click)="onBagaglioSelect(p, bagaglio)"
-      >
-        <div class="tipo-bagaglio">{{ bagaglio.descrizione }}</div>
-        <div class="dettagli">
-          <span>Peso: {{ bagaglio.peso }} kg</span>
+<div class="bagaglio">
+  <h3>Check-in</h3>
+  <div class="bagaglio-selector">
+    <div *ngFor="let p of clienti">
+      <h3>Seleziona il bagaglio per {{ p.nome }}:</h3>
+      <div class="bagaglio-opzioni">
+        <div
+          *ngFor="let bagaglio of bagagliDisponibili"
+          class="bagaglio-opzione"
+          [class.selezionato]=postoSelzionato(p,bagaglio)
+          (click)="onBagaglioSelect(p, bagaglio)"
+        >
+          <div class="tipo-bagaglio">{{ bagaglio.descrizione }}</div>
+          <div class="dettagli">
+            <span>Peso: {{ bagaglio.peso }} kg</span>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+  <div>
+    <button (click)="terminaCheckin()" [disabled]="checkBagagli()" class="btn">Checkin</button>
   </div>
 </div>

@@ -4,10 +4,23 @@
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 300px; /* Larghezza fissa */
+  width: 600px; /* Larghezza fissa */
+  height: 700px;
   max-width: 100%;
   margin: 0 auto; /* Centra il contenitore */
-  overflow-y: auto; /* Abilita lo scorrimento orizzontale */
+  overflow-y: scroll; /* Abilita lo scorrimento orizzontale */
+}
+
+.bagaglio{
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 600px; /* Larghezza fissa */
+  height: 50%;
+  max-width: 100%;
+  margin: 0 auto; /* Centra il contenitore */
 }
 
 h3 {
@@ -54,4 +67,29 @@ h3 {
 .dettagli span {
   display: block;
   margin-top: 5px;
+}
+
+.btn {
+  position: sticky; /* Mantieni il bottone visibile rispetto al contenitore */
+  bottom: 10px; /* Posiziona il bottone a 10px dal fondo del contenitore */
+  left: 50%; /* Allinea il bottone al centro */
+  transform: translateX(-50%); /* Correggi il centramento */
+  margin-top: 20px; /* Spazio superiore per separarlo dagli altri elementi */
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center; /* Allinea il testo al centro */
+}
+
+
+.btn:disabled {
+  background-color: rgba(0, 123, 255, 0.6); /* Colore più chiaro se disabilitato */
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Colore scuro al passaggio */
 }
