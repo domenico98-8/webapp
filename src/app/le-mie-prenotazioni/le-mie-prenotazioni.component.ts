@@ -32,6 +32,12 @@ export class LeMiePrenotazioniComponent implements OnInit {
     });
   }
 
+  cancellaPrenotazione(codicePrenotazione:string): void {
+    this.prenotazioneService.cancellaPrenotazione(codicePrenotazione).subscribe(remove=>{
+      alert("Penotazione Cancellata");
+      window.location.reload();
+    });
+  }
 
   apriInfo(codicePrenotazione: string): void {
     alert(`Informazioni del biglietto per: ${codicePrenotazione}`);

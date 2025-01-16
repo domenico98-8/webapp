@@ -29,8 +29,8 @@ export class BookService {
     return this.http.post(`${this.apiUrl}/checkin/${idPrenotazione}`, prenotazione,{ responseType: 'text' });
   }
 
-  public isCheckin(idPrenotazione:string|undefined,numpass:string|undefined) {
-    return this.http.get<boolean>(`${this.apiUrl}/isCheckin/${idPrenotazione}/${numpass}`);
+  public cancellaPrenotazione(codicePrenotazione: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/cancellaPrenotazione/${codicePrenotazione}`);
   }
 
 

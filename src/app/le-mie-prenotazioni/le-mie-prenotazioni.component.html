@@ -1,4 +1,7 @@
 <div class="biglietti-container">
+  <div *ngIf="prenotazioni.length == 0" class="no-prenotazioni">
+    Non ci sono Prenotazioni!
+  </div>
   <div *ngFor="let prenotazione of prenotazioni" class="biglietto">
     <div class="biglietto-header">
       <h3>{{ prenotazione.origine }} ➝ {{ prenotazione.destinazione }}</h3>
@@ -24,6 +27,7 @@
         <button (click)="checkIn(prenotazione.codicePrenotazione)" class="btn btn-checkin">Esegui Check-in</button>
       </div>
       <button (click)="apriInfo(prenotazione.codicePrenotazione)" class="btn btn-info">Info Biglietto</button>
+      <button (click)="cancellaPrenotazione(prenotazione.codicePrenotazione)" class="btn btn-danger">Cancella</button>
     </div>
   </div>
 </div>

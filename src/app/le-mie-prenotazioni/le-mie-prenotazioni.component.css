@@ -136,3 +136,14 @@
   background-color: #0056b3;
 }
 
+.no-prenotazioni {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; /* Rende il contenitore a tutta altezza */
+  font-size: 2rem; /* Dimensione del testo grande */
+  font-weight: bold; /* Testo in grassetto */
+  text-align: center; /* Allineamento al centro */
+  color: #555; /* Colore del testo (puoi cambiarlo in base al tema) */
+}
+
