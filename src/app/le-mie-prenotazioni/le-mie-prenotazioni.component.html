@@ -20,7 +20,9 @@
       <p>Grazie per aver scelto la nostra compagnia!</p>
     </div>
     <div class="biglietto-azioni">
-      <button (click)="checkIn(prenotazione.codicePrenotazione)" class="btn btn-checkin">Esegui Check-in</button>
+      <div *ngIf="!prenotazione.checkin">
+        <button (click)="checkIn(prenotazione.codicePrenotazione)" class="btn btn-checkin">Esegui Check-in</button>
+      </div>
       <button (click)="apriInfo(prenotazione.codicePrenotazione)" class="btn btn-info">Info Biglietto</button>
     </div>
   </div>

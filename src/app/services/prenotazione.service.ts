@@ -25,8 +25,12 @@ export class BookService {
     return this.http.get<Cliente[]>(`${this.apiUrl}/getClientiFromPrenotazione/${idPrenotazione}`);
   }
 
-  public checkin(prenotazione:PrenotazioneBagaglio[]){
-    return this.http.post(`${this.apiUrl}/checkin`, prenotazione,{ responseType: 'text' });
+  public checkin(prenotazione:PrenotazioneBagaglio[],idPrenotazione:string|undefined){
+    return this.http.post(`${this.apiUrl}/checkin/${idPrenotazione}`, prenotazione,{ responseType: 'text' });
+  }
+
+  public isCheckin(idPrenotazione:string|undefined,numpass:string|undefined) {
+    return this.http.get<boolean>(`${this.apiUrl}/isCheckin/${idPrenotazione}/${numpass}`);
   }
 
 

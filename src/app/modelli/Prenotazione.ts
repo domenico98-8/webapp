@@ -26,6 +26,7 @@ export class PrenotazioneResponse{
   destinazione!:string;
   orario!:string;
   numero_passeggeri!:string;
+  checkin!:boolean;
 
   constructor() {
   }

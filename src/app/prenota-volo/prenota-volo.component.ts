@@ -120,13 +120,11 @@ export class PrenotaVoloComponent implements OnInit  {
     if (this.postiSelezionati!=null && this.postiSelezionati.length > 0 && this.passeggeriForms!=null && this.passeggeriForms.length > 0 && this.codiceVolo!='') {
       const richiestaPrenotazione= this.generaRichiestaPrenotazione(this.passeggeriForms,this.postiSelezionati,this.codiceVolo);
       this.bookService.bookFly(richiestaPrenotazione).subscribe(book => {
-        if (book.status=='202') {
           alert("Prenotazione Effettuata con successo!");
           this.router.navigate(['/le-mie-prenotazioni']);
-        }
       },
         err => {
-        console.log(err);
+          console.log(err);
         })
     } else {
       alert("Per favore, seleziona un posto.");

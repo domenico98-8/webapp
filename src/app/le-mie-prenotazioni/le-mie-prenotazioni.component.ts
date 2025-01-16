@@ -13,7 +13,7 @@ export class LeMiePrenotazioniComponent implements OnInit {
 
   prenotazioni:PrenotazioneResponse[] = [];
 
-  constructor(private bookService:BookService,private authService:AuthService, private router:Router) { }
+  constructor(private bookService:BookService,private authService:AuthService, private router:Router,private prenotazioneService:BookService) { }
 
   ngOnInit(): void {
     this.bookService.getMyBook(this.authService.getUser()).subscribe((prenotazioni:PrenotazioneResponse[]) => {
@@ -31,6 +31,7 @@ export class LeMiePrenotazioniComponent implements OnInit {
       }
     });
   }
+
 
   apriInfo(codicePrenotazione: string): void {
     alert(`Informazioni del biglietto per: ${codicePrenotazione}`);

@@ -2,7 +2,7 @@ import {Component, Output, EventEmitter, OnInit, Input} from '@angular/core';
 import {Bagaglio} from "../modelli/Bagaglio";
 import {PrenotazioneBagaglio} from "../modelli/Prenotazione";
 import {Cliente} from "../modelli/Cliente";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {BagaglioService} from "../services/bagaglio.service";
 import {BookService} from "../services/prenotazione.service";
 
@@ -21,7 +21,7 @@ export class CheckinBagaglioComponent implements OnInit {
 
   prenotazione: PrenotazioneBagaglio[] = [];
 
-  constructor(private route:ActivatedRoute,private bagaglioService:BagaglioService, private prenotazioneService:BookService) {
+  constructor(private route:ActivatedRoute,private bagaglioService:BagaglioService, private prenotazioneService:BookService,private router:Router) {
   }
 
   onBagaglioSelect(cliente: Cliente, bagaglio: Bagaglio): void {
@@ -82,8 +82,11 @@ export class CheckinBagaglioComponent implements OnInit {
   }
 
   terminaCheckin(){
-    this.prenotazioneService.checkin(this.prenotazione).subscribe(checkin=>{
+    this.prenotazioneService.checkin(this.prenotazione,this.idPrenotazione).subscribe(checkin=>{
       alert(checkin);
+      this.router.navigate(["/le-mie-prenotazioni"]);
+    }, error => {
+      console.log(error);
     })
   }
 }
