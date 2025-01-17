@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Bagaglio} from "../modelli/Bagaglio";
 import {PrenotazioneBagaglio} from "../modelli/Prenotazione";
 import {Cliente} from "../modelli/Cliente";
