@@ -1,0 +1,13 @@
+<div class="profilo-container">
+  <h2>Profilo Utente</h2>
+  <div class="info">
+    <p><strong>Nome:</strong> {{ utente.nome }}</p>
+    <p><strong>Cognome:</strong> {{ utente.cognome }}</p>
+    <p><strong>Anno di Nascita:</strong> {{ utente.annoNascita }}</p>
+    <p><strong>Email:</strong> {{ utente.email }}</p>
+  </div>
+  <div class="azioni">
+    <button (click)="logout()" class="btn btn-danger">Logout</button>
+    <button (click)="cambioPassword()" class="btn btn-primary">Cambia Password</button>
+  </div>
+</div>
