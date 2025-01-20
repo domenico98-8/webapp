@@ -8,7 +8,7 @@ export class PrenotazioneRequest{
   posti!:PostoResponse[];
   costo!:number;
   volo!:string;
-  idUtente!:number;
+  idUtente!:number|null;
 
   constructor() {
   }

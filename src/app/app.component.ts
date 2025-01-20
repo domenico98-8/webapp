@@ -1,28 +1,36 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
-import {AuthService} from "./services/auth.service";
-import {LoginService} from "./services/login.service";
+import {AuthService} from "./services/cookie.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements DoCheck{
+export class AppComponent implements DoCheck, OnInit{
   private isAuthenticated = false;
 
-  constructor(private authService: AuthService,private loginService: LoginService) {
+  constructor(private authService: AuthService,private router: Router) {
   }
 
-  checkAuthentication(): void {
-    const token = this.authService.getToken();
-    this.isAuthenticated = token !== null && token.trim().length > 0;
+  ngOnInit(): void {
+    if(this.getIsAuthenticated()){
+      this.router.navigate(['/home-page']);
+    }
   }
+
 
   ngDoCheck(): void {
-    this.checkAuthentication();
+    this.getIsAuthenticated();
   }
 
-  getIsAuthenticated(){
+  getIsAuthenticated():boolean{
+    if (this.authService.isAuthenticated()) {
+      this.isAuthenticated = true;
+    }else{
+      this.isAuthenticated = false;
+    }
     return this.isAuthenticated;
   }
+
 }

@@ -17,6 +17,7 @@ import { PrenotaVoloComponent } from './prenota-volo/prenota-volo.component';
 import { RegistrazioneComponent } from './registrazione/registrazione.component';
 import { LeMiePrenotazioniComponent } from './le-mie-prenotazioni/le-mie-prenotazioni.component';
 import { CheckinBagaglioComponent } from './checkin-bagaglio/checkin-bagaglio.component';
+import { BigliettiAereiComponent } from './biglietti-aerei/biglietti-aerei.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CheckinBagaglioComponent } from './checkin-bagaglio/checkin-bagaglio.co
     PrenotaVoloComponent,
     RegistrazioneComponent,
     LeMiePrenotazioniComponent,
-    CheckinBagaglioComponent
+    CheckinBagaglioComponent,
+    BigliettiAereiComponent
   ],
     imports: [
         BrowserModule,

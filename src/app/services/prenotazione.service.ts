@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {PrenotazioneBagaglio, PrenotazioneRequest, PrenotazioneResponse} from "../modelli/Prenotazione";
 import {Cliente} from "../modelli/Cliente";
+import {BigliettoResponse} from "../modelli/Biglietto";
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,10 @@ export class BookService {
 
   public cancellaPrenotazione(codicePrenotazione: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/cancellaPrenotazione/${codicePrenotazione}`);
+  }
+
+  public getBiglietti(codicePrenotazione:string|undefined): Observable<BigliettoResponse[]> {
+    return this.http.get<BigliettoResponse[]>(`${this.apiUrl}/getBiglietti/${codicePrenotazione}`);
   }
 
 

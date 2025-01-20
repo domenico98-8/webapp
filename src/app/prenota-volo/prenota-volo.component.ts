@@ -6,7 +6,7 @@ import {BookService} from "../services/prenotazione.service";
 import {UtenteRequest} from "../modelli/Utente";
 import {PostoResponse} from "../modelli/Posto";
 import {PrenotazioneRequest} from "../modelli/Prenotazione";
-import {AuthService} from "../services/auth.service";
+import {AuthService} from "../services/cookie.service";
 
 @Component({
   selector: 'app-prenota-volo',
@@ -148,12 +148,13 @@ export class PrenotaVoloComponent implements OnInit  {
       posto.numeroPosto=postiSelezionati[i];
       posti.push(posto);
     }
+    const utente=this.authService.getUser() ?? 0;
     const prenotazione:PrenotazioneRequest={
       passeggeri: passeggeri,
       posti: posti,
       costo:this.prezzo,
       volo: codiceVolo,
-      idUtente:+this.authService.getUser()
+      idUtente:+utente
     };
     return prenotazione;
   }

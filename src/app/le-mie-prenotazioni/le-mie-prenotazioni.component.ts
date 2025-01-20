@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {PrenotazioneResponse} from "../modelli/Prenotazione";
 import {BookService} from "../services/prenotazione.service";
-import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../services/cookie.service";
 
 @Component({
   selector: 'app-le-mie-prenotazioni',
@@ -16,7 +16,8 @@ export class LeMiePrenotazioniComponent implements OnInit {
   constructor(private bookService:BookService,private authService:AuthService, private router:Router,private prenotazioneService:BookService) { }
 
   ngOnInit(): void {
-    this.bookService.getMyBook(this.authService.getUser()).subscribe((prenotazioni:PrenotazioneResponse[]) => {
+    const user=this.authService.getUser()??0;
+    this.bookService.getMyBook(+user).subscribe((prenotazioni:PrenotazioneResponse[]) => {
       this.prenotazioni=prenotazioni;
     },
       (error) => {
@@ -40,6 +41,10 @@ export class LeMiePrenotazioniComponent implements OnInit {
   }
 
   apriInfo(codicePrenotazione: string): void {
-    alert(`Informazioni del biglietto per: ${codicePrenotazione}`);
+    this.router.navigate(['/biglietti'], {
+      queryParams: {
+        codicePrenotazione: codicePrenotazione
+      }
+    })
   }
 }

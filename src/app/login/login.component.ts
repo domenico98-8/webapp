@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginService} from "../services/login.service";
-import {AuthService} from "../services/auth.service";
+import {AuthService} from "../services/cookie.service";
 
 @Component({
   selector: 'app-login',
