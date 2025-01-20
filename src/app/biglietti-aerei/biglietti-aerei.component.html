@@ -1,0 +1,10 @@
+<div class="biglietti-container">
+  <div *ngFor="let passeggero of passeggeri" class="biglietto">
+    <h2>Biglietto</h2>
+    <p><strong>Nome:</strong> {{ passeggero.nome }}</p>
+    <p><strong>Cognome:</strong> {{ passeggero.cognome }}</p>
+    <p><strong>Documento:</strong>{{passeggero.documento}}</p>
+    <p><strong>Bagaglio:</strong> {{ passeggero.bagaglio }}</p>
+    <p><strong>Posto a sedere:</strong> {{ passeggero.posto }}</p>
+  </div>
+</div>
