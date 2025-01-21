@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../services/cookie.service";
 import {Router} from "@angular/router";
+import {UserService} from "../services/user.services";
+import {ClienteResponse} from "../modelli/Cliente";
 
 @Component({
   selector: 'app-profilo',
@@ -8,19 +10,15 @@ import {Router} from "@angular/router";
   styleUrls: ['./profilo.component.css']
 })
 export class ProfiloComponent implements OnInit {
-  utente: any = {
-    nome: 'Mario',
-    cognome: 'Rossi',
-    annoNascita: 1990,
-    email: 'mario.rossi@example.com'
-  };
+  utente: ClienteResponse|null = null;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,private userService: UserService) {}
 
   ngOnInit(): void {
-    // Caricare le informazioni utente se vengono da un'API
-    // Esempio:
-    // this.authService.getUserProfile().subscribe(data => this.utente = data);
+    const codiceUtente=this.authService.getUser();
+    this.userService.getUserAccount(codiceUtente).subscribe(user => {
+      this.utente = user;
+    })
   }
 
   logout(): void {
@@ -31,6 +29,5 @@ export class ProfiloComponent implements OnInit {
   }
 
   cambioPassword(): void {
-    this.router.navigate(['/cambio-password']); // Naviga a una pagina dedicata per il cambio password
   }
 }

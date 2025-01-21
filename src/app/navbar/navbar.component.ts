@@ -25,6 +25,11 @@ export class NavbarComponent {
 
   }
 
+  navigateToProfilo(event: Event): void {
+    event.preventDefault();
+    this.router.navigate(['/profilo']);
+  }
+
   navigateToLeMiePrenotazioni(event: Event){
     event.preventDefault();
     this.router.navigate(['/le-mie-prenotazioni']);
