@@ -124,7 +124,7 @@ export class PrenotaVoloComponent implements OnInit  {
           this.router.navigate(['/le-mie-prenotazioni']);
       },
         err => {
-          console.log(err);
+          alert(err.error);
         })
     } else {
       alert("Per favore, seleziona un posto.");

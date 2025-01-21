@@ -37,7 +37,7 @@ export class LoginComponent {
         }
       },
       (error) => {
-        alert('Credenziali non valide, riprova');
+        alert(error.error);
       });
   }
 }
