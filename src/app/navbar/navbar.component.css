@@ -7,6 +7,8 @@
   width: 45px; /* Imposta una larghezza fissa */
   height: auto;
   margin-left: 20px;
+  margin-right: 20px;
+
 }
 
 /* Stili base */
@@ -44,6 +46,17 @@ ul {
 /* Mostra il menu a tendina quando si passa sopra il link */
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.dropdown-header {
+  display: flex;
+  align-items: center; /* Allinea verticalmente l'immagine e il testo */
+}
+
+.welcome-text {
+  font-size: 16px; /* Dimensione del testo */
+  font-weight: bold; /* (Opzionale) Rendi il testo in grassetto */
+  color: #333; /* (Opzionale) Cambia il colore del testo */
 }
 
 

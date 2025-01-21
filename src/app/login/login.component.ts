@@ -23,43 +23,21 @@ export class LoginComponent {
       return;
     }
 
-    try {
-      this.hash = await this.generateHash(this.password);
-    } catch (error) {
-      console.error('Errore durante la generazione dell\'hash:', error);
-      alert('Errore interno, riprova più tardi.');
-      return;
-    }
-
-    this.loginService.login(this.email, this.hash).subscribe(
+    this.loginService.login(this.email, this.password).subscribe(
       (token: string) => {
         const tokenId:string[]=token.split(';');
 
-        // Salva il token nel localStorage
+        // Salva il token nel cookie
         if(tokenId.length == 2){
           this.authService.saveToken(tokenId[0]);
           this.authService.saveUser(tokenId[1]);
           this.router.navigate(['/home-page']);
         }else {
-          alert('Erroe Imprevisto!');
+          alert(token);
         }
       },
       (error) => {
-        console.error('Errore durante l\'accesso:', error);
         alert('Credenziali non valide, riprova');
       });
-  }
-
-  private async generateHash(input: string | undefined): Promise<string> {
-    // Codifica la stringa in formato Uint8Array
-    const encoder = new TextEncoder();
-    const data = encoder.encode(input);
-
-    // Calcola l'hash utilizzando l'algoritmo SHA-256
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-
-    // Converti l'ArrayBuffer risultante in una stringa esadecimale
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
   }
 }

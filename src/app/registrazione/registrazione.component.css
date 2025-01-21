@@ -151,3 +151,11 @@ select:focus {
   height: auto;
   margin-bottom: 10px;
 }
+
+.small-italic {
+  font-size: 0.8em; /* Riduce la dimensione del font */
+  text-decoration: none;
+  font-style: italic; /* Imposta il testo in corsivo */
+  color: gray; /* (Opzionale) Cambia il colore per renderlo meno invadente */
+}
+

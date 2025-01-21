@@ -44,28 +44,16 @@ export class RegistrazioneComponent {
   }
 
   private async generateRequest() {
-    const password: string | undefined = await this.generateHash(this.registrationForm.get('password')?.value);
+
     this.request = {
       nome: this.registrationForm.get('nome')?.value,
       cognome: this.registrationForm.get('cognome')?.value,
       email: this.registrationForm.get('email')?.value,
-      password: password,
+      password: this.registrationForm.get('password')?.value,
       sesso: this.registrationForm.get('sesso')?.value[0],
       dataNascita: this.registrationForm.get('dataNascita')?.value,
       documento: this.registrationForm.get('documento')?.value
     }
   }
 
-  private async generateHash(input: string | undefined): Promise<string> {
-    // Codifica la stringa in formato Uint8Array
-    const encoder = new TextEncoder();
-    const data = encoder.encode(input);
-
-    // Calcola l'hash utilizzando l'algoritmo SHA-256
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-
-    // Converti l'ArrayBuffer risultante in una stringa esadecimale
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
-  }
 }

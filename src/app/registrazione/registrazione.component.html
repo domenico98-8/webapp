@@ -97,8 +97,9 @@
         formControlName="password"
         class="form-control"
       />
+      <a class="small-italic">8 Caratteri</a>
       <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched" class="error">
-        Password obbligatoria.
+        Password non Valida.
       </div>
     </div>
 
