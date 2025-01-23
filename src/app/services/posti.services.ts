@@ -8,7 +8,7 @@ import {PostoResponse} from "../modelli/Posto";
 })
 export class PostiServices {
 
-  private apiUrl = 'http://localhost:8080/api/posti';
+  private apiUrl = 'https://localhost:8443/api/posti';
 
   constructor(private http: HttpClient) { }
 

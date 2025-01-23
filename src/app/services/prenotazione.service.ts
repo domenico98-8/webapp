@@ -10,7 +10,7 @@ import {BigliettoResponse} from "../modelli/Biglietto";
 })
 export class BookService {
 
-  private apiUrl = 'http://localhost:8080/api/prenotazioni';
+  private apiUrl = 'https://localhost:8443/api/prenotazioni';
 
   constructor(private http: HttpClient) { }
 

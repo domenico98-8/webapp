@@ -8,7 +8,7 @@ import {VoloRequest, VoloResponse} from "../modelli/Volo";
 })
 export class VoliService {
 
-  private apiUrl = 'http://localhost:8080/api/voli';
+  private apiUrl = 'https://localhost:8443/api/voli';
 
   constructor(private http: HttpClient) { }
 

@@ -8,7 +8,7 @@ import {Bagaglio} from "../modelli/Bagaglio";
 })
 export class BagaglioService {
 
-  private apiUrl = 'http://localhost:8080/api/bagaglio';
+  private apiUrl = 'https://localhost:8443/api/bagaglio';
 
   constructor(private http: HttpClient) { }
 

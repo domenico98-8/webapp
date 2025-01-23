@@ -68,7 +68,12 @@
               "browserTarget": "wabapp:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "ssl": true,
+            "sslKey": "Certificati/key.pem",
+            "sslCert": "Certificati/cert.pem"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

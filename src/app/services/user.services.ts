@@ -9,7 +9,7 @@ import {ClienteResponse} from "../modelli/Cliente";
 })
 export class UserService {
 
-  private apiUrl = 'http://localhost:8080/api/utenti';
+  private apiUrl = 'https://localhost:8443/api/utenti';
 
   constructor(private http: HttpClient) { }
 
