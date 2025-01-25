@@ -11,4 +11,5 @@ export class NavbarService {
   setNavbarVisible(visible: boolean): void {
     this.navbarVisibilitySubject.next(visible);
   }
+
 }

@@ -22,19 +22,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.loginService.logout().subscribe(
-      response => {
-        // Gestisci la risposta positiva (logout avvenuto con successo)
-        console.log('Logout effettuato con successo');
-        this.navbarService.setNavbarVisible(false);
-        this.router.navigate(['/login']);
-      },
-      error => {
-        // Gestisci eventuali errori durante il logout
-        console.error('Errore durante il logout', error);
-      }
-    );
-
+    this.loginService.logout();
   }
 
   navigateToProfilo(event: Event): void {
@@ -48,11 +36,19 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.utenteService.getUserAccount(this.authService.getUser()).subscribe(user=>{
-      if(user){
-        this.nomeUtente = user.nome;
+    this.authService.getUser().subscribe(
+      (data) => {
+        this.nomeUtente = data;
+        this.utenteService.getUserAccount(this.nomeUtente).subscribe((user) => {
+          this.nomeUtente = user.nome;
+        });
+      },
+      (error) => {
+        console.error(error);
       }
-    })
+    );
   }
+
+
 
 }

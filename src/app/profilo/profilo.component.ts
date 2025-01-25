@@ -3,6 +3,7 @@ import {AuthService} from "../services/cookie.service";
 import {Router} from "@angular/router";
 import {UserService} from "../services/user.services";
 import {ClienteResponse} from "../modelli/Cliente";
+import {LoginService} from "../services/login.service";
 
 @Component({
   selector: 'app-profilo',
@@ -12,23 +13,23 @@ import {ClienteResponse} from "../modelli/Cliente";
 export class ProfiloComponent implements OnInit {
   utente: ClienteResponse|null = null;
 
-  constructor(private authService: AuthService, private router: Router,private userService: UserService) {}
+  constructor(private authService: AuthService,private userService: UserService,private loginService: LoginService) {}
 
   ngOnInit(): void {
-    const codiceUtente=this.authService.getUser();
-    this.userService.getUserAccount(codiceUtente).subscribe(user => {
-      this.utente = user;
-    })
+    this.authService.getUser().subscribe(
+      (data) => {
+        this.userService.getUserAccount(data).subscribe((user) => {
+          this.utente = user;
+        });
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
   logout(): void {
-    this.authService.isJwtValid().subscribe(isAuthenticated => {
-      if (isAuthenticated) {
-        this.router.navigate(['/logout']);
-      }
-    }, err => {
-      console.log(err);
-    })
+    this.loginService.logout();
   }
 
   cambioPassword(): void {

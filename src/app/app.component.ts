@@ -1,7 +1,6 @@
-import {Component, DoCheck, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {AuthService} from "./services/cookie.service";
 import {Router} from "@angular/router";
-import {LoginComponent} from "./login/login.component";
 import {NavbarService} from "./services/navbar.service";
 import {Subscription} from "rxjs";
 

@@ -16,13 +16,21 @@ export class LeMiePrenotazioniComponent implements OnInit {
   constructor(private bookService:BookService,private authService:AuthService, private router:Router,private prenotazioneService:BookService) { }
 
   ngOnInit(): void {
-    const user=this.authService.getUser()??0;
-    this.bookService.getMyBook(+user).subscribe((prenotazioni:PrenotazioneResponse[]) => {
-      this.prenotazioni=prenotazioni;
-    },
+      this.authService.getUser().subscribe(
+      (data) => {
+        const user = data;
+        this.bookService.getMyBook(+user).subscribe((prenotazioni:PrenotazioneResponse[]) => {
+            this.prenotazioni=prenotazioni;
+          },
+          (error) => {
+            console.log(error);
+          })
+      },
       (error) => {
-        console.log(error);
-      })
+        console.error(error);
+      }
+    );;
+
   }
 
   checkIn(codicePrenotazione: string): void {
