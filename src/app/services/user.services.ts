@@ -18,7 +18,7 @@ export class UserService {
   }
 
   public getUserAccount(codiceUtente:string|null): Observable<ClienteResponse> {
-    return this.http.get<ClienteResponse>(`${this.apiUrl}/getUserAccount/${codiceUtente}`);
+    return this.http.get<ClienteResponse>(`${this.apiUrl}/getUserAccount/${codiceUtente}`,);
   }
 
 

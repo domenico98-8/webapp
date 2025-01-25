@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {LoginService} from "../services/login.service";
 import {AuthService} from "../services/cookie.service";
 import {UserService} from "../services/user.services";
+import {NavbarService} from "../services/navbar.service";
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,7 @@ export class NavbarComponent implements OnInit {
 
   nomeUtente: string|null = null;
 
-  constructor(private router: Router,private authService:AuthService,private loginService:LoginService,private utenteService:UserService) { }
+  constructor(private router: Router,private authService:AuthService,private loginService:LoginService,private utenteService:UserService,private navbarService: NavbarService) { }
 
   navigateToHome(event: Event): void {
     event.preventDefault();
@@ -21,10 +22,18 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    if(this.authService.isAuthenticated()){
-      this.authService.removeToken();
-      this.router.navigate(['/login']);
-    }
+    this.loginService.logout().subscribe(
+      response => {
+        // Gestisci la risposta positiva (logout avvenuto con successo)
+        console.log('Logout effettuato con successo');
+        this.navbarService.setNavbarVisible(false);
+        this.router.navigate(['/login']);
+      },
+      error => {
+        // Gestisci eventuali errori durante il logout
+        console.error('Errore durante il logout', error);
+      }
+    );
 
   }
 

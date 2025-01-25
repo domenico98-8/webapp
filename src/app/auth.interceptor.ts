@@ -11,22 +11,11 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService,private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
-    // Ottieni il token dal servizio AuthService
-    const token = this.authService.getToken();
+    // Modifica la richiesta per includere i cookie
+    const modifiedRequest = req.clone({
+      withCredentials: true // Indica che i cookie devono essere inviati con la richiesta
+    });
 
-    // Se c'è un token, aggiungilo nell'header Authorization
-    if (token && this.authService.isAuthenticated()) {
-      const cloned = req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      return next.handle(cloned);
-    }else{
-      this.router.navigate(['/login']);
-    }
-
-    // Altrimenti, lascia la richiesta invariata
-    return next.handle(req);
+    return next.handle(modifiedRequest);
   }
 }

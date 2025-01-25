@@ -72,7 +72,8 @@
           "options": {
             "ssl": true,
             "sslKey": "Certificati/key.pem",
-            "sslCert": "Certificati/cert.pem"
+            "sslCert": "Certificati/cert.pem",
+            "port": 443
           }
         },
         "extract-i18n": {

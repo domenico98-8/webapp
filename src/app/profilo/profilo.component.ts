@@ -22,10 +22,13 @@ export class ProfiloComponent implements OnInit {
   }
 
   logout(): void {
-    if(this.authService.isAuthenticated()){
-      this.authService.removeToken();
-      this.router.navigate(['/login']);
-    }
+    this.authService.isJwtValid().subscribe(isAuthenticated => {
+      if (isAuthenticated) {
+        this.router.navigate(['/logout']);
+      }
+    }, err => {
+      console.log(err);
+    })
   }
 
   cambioPassword(): void {

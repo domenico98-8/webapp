@@ -12,13 +12,13 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HomePageComponent} from "./home-page/home-page.component";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
-import {AuthInterceptor} from "./auth.interceptor";
 import { PrenotaVoloComponent } from './prenota-volo/prenota-volo.component';
 import { RegistrazioneComponent } from './registrazione/registrazione.component';
 import { LeMiePrenotazioniComponent } from './le-mie-prenotazioni/le-mie-prenotazioni.component';
 import { CheckinBagaglioComponent } from './checkin-bagaglio/checkin-bagaglio.component';
 import { BigliettiAereiComponent } from './biglietti-aerei/biglietti-aerei.component';
 import { ProfiloComponent } from './profilo/profilo.component';
+import {AuthInterceptor} from "./auth.interceptor";
 
 
 @NgModule({
