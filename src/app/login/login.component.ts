@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
-import {LoginService} from "../services/login.service";
+import {LoginService, ResponseData} from "../services/login.service";
 import {AuthService} from "../services/cookie.service";
 import {NavbarService} from "../services/navbar.service";
 
@@ -33,12 +33,12 @@ export class LoginComponent {
           this.navbarService.setNavbarVisible(true);
           this.router.navigate(['/home-page']);
         }else {
-          alert(token);
+          alert(token.message);
         }
       },
-      (error) => {
+      (error:any) => {
         this.navbarService.setNavbarVisible(false);
-        alert(error.error);
+        alert(error.error.message);
       });
   }
 }
