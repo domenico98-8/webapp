@@ -5,7 +5,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BookService} from "../services/prenotazione.service";
 import {UtenteRequest} from "../modelli/Utente";
 import {PostoResponse} from "../modelli/Posto";
-import {PrenotazioneRequest} from "../modelli/Prenotazione";
+import {PrenotazioneRequest, PrenotazioneResponse} from "../modelli/Prenotazione";
 import {AuthService} from "../services/cookie.service";
 
 @Component({
@@ -34,11 +34,21 @@ export class PrenotaVoloComponent implements OnInit  {
   // Variabile per tracciare il posto selezionato
   postoSelezionato: string | null = null;
 
+  idUtente:string='';
+
   constructor(private route: ActivatedRoute,private postiService:PostiServices, private fb: FormBuilder, private bookService: BookService,
               private authService:AuthService, private router: Router) {
     this.numeroPasseggeriForm = this.fb.group({
       numeroPasseggeri: [1, [Validators.required, Validators.min(1), Validators.max(10)]],
     });
+    this.authService.getUser().subscribe(
+      (data) => {
+        this.idUtente = data;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
   ngOnInit() {
@@ -148,13 +158,20 @@ export class PrenotaVoloComponent implements OnInit  {
       posto.numeroPosto=postiSelezionati[i];
       posti.push(posto);
     }
-    const utente=this.authService.getUser() ?? 0;
+    this.authService.getUser().subscribe(
+      (data) => {
+       this.idUtente = data;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
     const prenotazione:PrenotazioneRequest={
       passeggeri: passeggeri,
       posti: posti,
       costo:this.prezzo,
       volo: codiceVolo,
-      idUtente:+utente
+      idUtente:+this.idUtente
     };
     return prenotazione;
   }

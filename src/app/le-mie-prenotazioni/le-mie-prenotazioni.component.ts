@@ -29,7 +29,7 @@ export class LeMiePrenotazioniComponent implements OnInit {
       (error) => {
         console.error(error);
       }
-    );;
+    );
 
   }
 
